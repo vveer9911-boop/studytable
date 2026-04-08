@@ -1,17 +1,14 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Free Study Timetable Planner & Generator | Studytable</title>
   <meta name="description" content="Generate your perfect free study timetable online. Use our smart generator for JEE, NEET, and school exams to balance your subjects and improve retention.">
-  
   <meta name="keywords" content="free study timetable, study timetable generator, JEE study planner, NEET exam schedule, weekly study table maker, student time management tool, class 12 board planner">
   <meta name="google-site-verification" content="Cc02ry_8C-b-vRH56jbGI1YmIQEzOm8LvBNl89TdSw4" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9335905935507660" crossorigin="anonymous"></script>
 
-  <!-- ✅ FAVICON: Black background, blue illustration SVG -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23090909'/%3E%3Crect x='12' y='10' width='40' height='44' rx='4' fill='none' stroke='%233b82f6' stroke-width='2.5'/%3E%3Cline x1='18' y1='20' x2='46' y2='20' stroke='%233b82f6' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='18' y1='27' x2='40' y2='27' stroke='%233b82f6' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='18' y1='34' x2='44' y2='34' stroke='%233b82f6' stroke-width='2' stroke-linecap='round'/%3E%3Cline x1='18' y1='41' x2='36' y2='41' stroke='%233b82f6' stroke-width='2' stroke-linecap='round'/%3E%3Ccircle cx='46' cy='46' r='10' fill='%23090909' stroke='%233b82f6' stroke-width='2'/%3E%3Cpath d='M43 46 L45.5 48.5 L50 43' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E">
 
   <script type="application/ld+json">
@@ -23,11 +20,7 @@
     "description": "A free online study timetable generator for competitive exams like JEE, NEET, and UPSC.",
     "applicationCategory": "EducationalApplication",
     "operatingSystem": "All",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "INR"
-    }
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" }
   }
   </script>
 
@@ -39,7 +32,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-  /* BASE STYLES */
+  /* ─────────── BASE ─────────── */
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #09090b;
@@ -56,587 +49,396 @@
     --purple: #8b5cf6;
     --radius: 12px;
   }
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+  body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text-main); line-height: 1.6; overflow-x: hidden; }
   a { text-decoration: none; color: inherit; }
 
-  /* ANIMATED BACKGROUND GRID */
   body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
-    background-size: 60px 60px;
-    pointer-events: none;
-    z-index: 0;
+    content: ''; position: fixed; inset: 0;
+    background-image: linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+    background-size: 60px 60px; pointer-events: none; z-index: 0;
   }
 
-  /* NAVBAR */
+  /* ─────────── NAVBAR ─────────── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(9, 9, 11, 0.85);
-    backdrop-filter: blur(12px);
+    background: rgba(9,9,11,0.9); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    padding: 0 5%;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 70px;
+    padding: 0 4%; display: flex; align-items: center; justify-content: space-between; height: 60px;
   }
   .logo { font-size: 20px; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
   .logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 30px; }
+  .nav-links { display: flex; gap: 24px; }
   .nav-links a { color: var(--text-muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--text-main); }
   .btn {
     background: var(--accent); color: #fff; border: none;
-    padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
-    cursor: pointer; transition: background 0.2s;
+    padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s; white-space: nowrap;
   }
   .btn:hover { background: var(--accent-hover); }
-  .btn-outline {
-    background: transparent; border: 1px solid var(--border); color: var(--text-main);
-  }
+  .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-main); }
   .btn-outline:hover { background: var(--bg-hover); }
+  .btn-danger { background: var(--red); color: #fff; border: none; }
+  .btn-danger:hover { background: #dc2626; }
 
-  /* ═══════════════════════════════════════════
-     HERO SECTION
-  ═══════════════════════════════════════════ */
-  .hero {
-    padding: 100px 5% 80px;
-    max-width: 1200px; margin: 0 auto; text-align: center;
-    position: relative;
-  }
+  /* ─────────── HERO ─────────── */
+  .hero { padding: 80px 5% 60px; max-width: 1200px; margin: 0 auto; text-align: center; position: relative; }
   .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.3);
     color: var(--accent); padding: 6px 16px; border-radius: 999px;
-    font-size: 13px; font-weight: 600; margin-bottom: 30px;
+    font-size: 13px; font-weight: 600; margin-bottom: 24px;
     animation: fadeInDown 0.6s ease;
   }
   .hero-badge .dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: pulse-dot 1.5s infinite; }
   @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
-  .hero h1 {
-    font-size: 56px; font-weight: 800; margin-bottom: 20px;
-    letter-spacing: -2px; line-height: 1.1;
-    animation: fadeInUp 0.7s ease 0.1s both;
-  }
+  .hero h1 { font-size: clamp(30px,6vw,56px); font-weight: 800; margin-bottom: 18px; letter-spacing: -2px; line-height: 1.1; animation: fadeInUp 0.7s ease 0.1s both; }
   .hero h1 span { color: var(--accent); }
-  .hero p {
-    font-size: 18px; color: var(--text-muted); max-width: 600px;
-    margin: 0 auto 36px;
-    animation: fadeInUp 0.7s ease 0.2s both;
-  }
-  .hero-actions {
-    display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
-    animation: fadeInUp 0.7s ease 0.3s both;
-  }
-  .hero-glow {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    width: 600px; height: 300px;
-    background: radial-gradient(ellipse, rgba(59,130,246,0.12) 0%, transparent 70%);
-    pointer-events: none; z-index: -1;
-  }
-
-  /* FLOATING ORBS */
-  .orb {
-    position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; z-index: -1; opacity: 0.4;
-  }
-  .orb-1 { width: 300px; height: 300px; background: rgba(59,130,246,0.3); top: -50px; right: 5%; animation: float1 8s ease-in-out infinite; }
-  .orb-2 { width: 200px; height: 200px; background: rgba(139,92,246,0.25); bottom: 0; left: 3%; animation: float2 10s ease-in-out infinite; }
+  .hero p { font-size: clamp(14px,2vw,18px); color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; animation: fadeInUp 0.7s ease 0.2s both; }
+  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; animation: fadeInUp 0.7s ease 0.3s both; }
+  .hero-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(59,130,246,0.12) 0%, transparent 70%); pointer-events: none; z-index: -1; }
+  .orb { position: absolute; border-radius: 50%; filter: blur(60px); pointer-events: none; z-index: -1; opacity: 0.4; }
+  .orb-1 { width: 280px; height: 280px; background: rgba(59,130,246,0.3); top: -50px; right: 5%; animation: float1 8s ease-in-out infinite; }
+  .orb-2 { width: 180px; height: 180px; background: rgba(139,92,246,0.25); bottom: 0; left: 3%; animation: float2 10s ease-in-out infinite; }
   @keyframes float1 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
   @keyframes float2 { 0%,100%{transform:translateY(0)} 50%{transform:translateY(20px)} }
-
   @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
   @keyframes fadeInUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
-  /* ═══════════════════════════════════════════
-     STATS BANNER
-  ═══════════════════════════════════════════ */
-  .stats-banner {
-    background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-    padding: 30px 5%;
-  }
-  .stats-inner {
-    max-width: 1200px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center;
-  }
-  .stat-item {}
-  .stat-num { font-size: 32px; font-weight: 800; color: var(--accent); line-height: 1; }
-  .stat-label { font-size: 13px; color: var(--text-muted); margin-top: 5px; }
+  /* ─────────── AD SPACES ─────────── */
+  .ad-leaderboard-wrap { display: flex; justify-content: center; padding: 12px 5%; background: var(--bg); }
+  .ad-leaderboard-inner { width: 100%; max-width: 728px; min-height: 90px; background: var(--bg-card); border: 1px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; overflow: hidden; }
+  .ad-rect-wrap { display: flex; justify-content: center; padding: 10px 5%; }
+  .ad-rect-inner { width: 100%; max-width: 336px; min-height: 280px; background: var(--bg-card); border: 1px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; overflow: hidden; }
+  .ad-in-content { width: 100%; min-height: 90px; background: var(--bg-card); border: 1px dashed var(--border); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; margin: 20px 0; overflow: hidden; }
 
-  /* ═══════════════════════════════════════════
-     SECTIONS
-  ═══════════════════════════════════════════ */
-  .section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
-  .section-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-  .section-sub { color: var(--text-muted); margin-bottom: 40px; font-size: 15px; }
+  /* ─────────── STATS ─────────── */
+  .stats-banner { background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 5%; }
+  .stats-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; text-align: center; }
+  .stat-num { font-size: clamp(22px,4vw,32px); font-weight: 800; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
 
-  /* ═══════════════════════════════════════════
-     FEATURES SECTION (NEW)
-  ═══════════════════════════════════════════ */
-  .features-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;
-  }
-  .feature-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 28px; transition: all 0.3s; position: relative; overflow: hidden;
-  }
-  .feature-card::before {
-    content: ''; position: absolute; inset: 0; opacity: 0;
-    background: linear-gradient(135deg, rgba(59,130,246,0.05), transparent);
-    transition: opacity 0.3s;
-  }
-  .feature-card:hover { border-color: rgba(59,130,246,0.4); transform: translateY(-4px); }
-  .feature-card:hover::before { opacity: 1; }
-  .feature-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
-    display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px;
-  }
-  .feature-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-  .feature-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+  /* ─────────── SECTIONS ─────────── */
+  .section { padding: 50px 5%; max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
+  .section-title { font-size: clamp(20px,4vw,28px); font-weight: 700; margin-bottom: 8px; }
+  .section-sub { color: var(--text-muted); margin-bottom: 32px; font-size: 14px; }
 
-  /* ═══════════════════════════════════════════
-     POMODORO TIMER (NEW)
-  ═══════════════════════════════════════════ */
-  .pomodoro-section {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 40px; text-align: center; margin-top: 40px;
-    position: relative; overflow: hidden;
-  }
-  .pomodoro-section::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at center, rgba(59,130,246,0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .pomodoro-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .pomodoro-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 30px; }
-  .timer-ring-container { position: relative; display: inline-block; margin-bottom: 30px; }
-  .timer-ring-svg { transform: rotate(-90deg); }
-  .timer-ring-bg { fill: none; stroke: var(--border); stroke-width: 8; }
-  .timer-ring-progress { fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
-  .timer-display {
-    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  .timer-time { font-size: 42px; font-weight: 800; letter-spacing: -2px; line-height: 1; }
-  .timer-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
-  .timer-controls { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-  .timer-mode-btn {
-    padding: 8px 18px; border-radius: 999px; font-size: 13px; font-weight: 600;
-    border: 1px solid var(--border); background: transparent; color: var(--text-muted); cursor: pointer; transition: all 0.2s;
-  }
-  .timer-mode-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .timer-big-btn {
-    padding: 14px 40px; border-radius: 10px; font-size: 16px; font-weight: 700;
-    background: var(--accent); color: #fff; border: none; cursor: pointer; transition: all 0.2s;
-    margin: 0 6px;
-  }
-  .timer-big-btn:hover { background: var(--accent-hover); transform: scale(1.03); }
-  .timer-big-btn.secondary { background: var(--bg-hover); color: var(--text-main); }
-  .timer-sessions { font-size: 13px; color: var(--text-muted); margin-top: 15px; }
-  .session-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--border); margin: 0 3px; transition: background 0.3s; }
-  .session-dot.done { background: var(--accent); }
+  /* ─────────── FEATURES ─────────── */
+  .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 32px; }
+  .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: all 0.3s; position: relative; overflow: hidden; }
+  .feature-card::before { content:''; position:absolute; inset:0; opacity:0; background:linear-gradient(135deg,rgba(59,130,246,0.05),transparent); transition:opacity 0.3s; }
+  .feature-card:hover { border-color:rgba(59,130,246,0.4); transform:translateY(-3px); }
+  .feature-card:hover::before { opacity:1; }
+  .feature-icon { width:44px; height:44px; border-radius:10px; background:rgba(59,130,246,0.1); border:1px solid rgba(59,130,246,0.2); display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:14px; }
+  .feature-title { font-size:15px; font-weight:700; margin-bottom:6px; }
+  .feature-desc { font-size:13px; color:var(--text-muted); line-height:1.7; }
 
-  /* ═══════════════════════════════════════════
-     STREAK TRACKER (NEW)
-  ═══════════════════════════════════════════ */
-  .streak-section {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 30px; margin-top: 20px;
-    display: flex; gap: 30px; align-items: center; flex-wrap: wrap;
-  }
-  .streak-main { text-align: center; }
-  .streak-num { font-size: 56px; font-weight: 800; color: var(--orange); line-height: 1; }
-  .streak-fire { font-size: 28px; }
-  .streak-label { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
-  .streak-calendar { flex: 1; }
-  .streak-calendar-title { font-size: 14px; font-weight: 600; margin-bottom: 12px; }
-  .streak-grid { display: flex; flex-wrap: wrap; gap: 5px; }
-  .streak-day {
-    width: 28px; height: 28px; border-radius: 6px; background: var(--bg);
-    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
-    font-size: 9px; color: var(--text-muted); cursor: pointer; transition: all 0.2s; position: relative;
-  }
-  .streak-day.studied { background: rgba(59,130,246,0.3); border-color: var(--accent); color: var(--accent); font-weight: 700; }
-  .streak-day.today { border-color: var(--orange); box-shadow: 0 0 0 2px rgba(245,158,11,0.3); }
-  .streak-day:hover { transform: scale(1.15); }
+  /* ─────────── POMODORO ─────────── */
+  .pomodoro-section { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:28px 20px; text-align:center; position:relative; overflow:hidden; }
+  .pomodoro-section::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(59,130,246,0.06) 0%,transparent 70%); pointer-events:none; }
+  .pomodoro-title { font-size:18px; font-weight:700; margin-bottom:4px; }
+  .pomodoro-sub { font-size:12px; color:var(--text-muted); margin-bottom:20px; }
+  .timer-ring-container { position:relative; display:inline-block; margin-bottom:20px; }
+  .timer-ring-svg { transform:rotate(-90deg); }
+  .timer-ring-bg { fill:none; stroke:var(--border); stroke-width:8; }
+  .timer-ring-progress { fill:none; stroke:var(--accent); stroke-width:8; stroke-linecap:round; transition:stroke-dashoffset 1s linear; }
+  .timer-display { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; }
+  .timer-time { font-size: clamp(28px,5vw,42px); font-weight:800; letter-spacing:-2px; line-height:1; }
+  .timer-label { font-size:11px; color:var(--text-muted); margin-top:3px; }
+  .timer-mode-btn { padding:7px 14px; border-radius:999px; font-size:12px; font-weight:600; border:1px solid var(--border); background:transparent; color:var(--text-muted); cursor:pointer; transition:all 0.2s; }
+  .timer-mode-btn.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .timer-modes-wrap { display:flex; gap:6px; justify-content:center; margin-bottom:20px; flex-wrap:wrap; }
+  .timer-big-btn { padding:12px 28px; border-radius:10px; font-size:15px; font-weight:700; background:var(--accent); color:#fff; border:none; cursor:pointer; transition:all 0.2s; margin:0 5px; }
+  .timer-big-btn:hover { background:var(--accent-hover); transform:scale(1.03); }
+  .timer-big-btn.secondary { background:var(--bg-hover); color:var(--text-main); }
+  .timer-sessions { font-size:12px; color:var(--text-muted); margin-top:12px; }
+  .session-dot { display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--border); margin:0 3px; transition:background 0.3s; }
+  .session-dot.done { background:var(--accent); }
 
-  /* ═══════════════════════════════════════════
-     SUBJECT PROGRESS (NEW)
-  ═══════════════════════════════════════════ */
-  .progress-section {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 30px; margin-top: 20px;
-  }
-  .progress-title { font-size: 16px; font-weight: 700; margin-bottom: 20px; }
-  .progress-item { margin-bottom: 18px; }
-  .progress-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
-  .progress-name { font-size: 14px; font-weight: 600; }
-  .progress-pct { font-size: 13px; color: var(--text-muted); }
-  .progress-bar-bg { background: var(--bg); border-radius: 999px; height: 8px; overflow: hidden; }
-  .progress-bar-fill { height: 100%; border-radius: 999px; transition: width 1.5s cubic-bezier(.4,0,.2,1); }
+  /* ─────────── STREAK ─────────── */
+  .streak-section { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; }
+  .streak-main { text-align:center; min-width:80px; }
+  .streak-num { font-size: clamp(36px,6vw,56px); font-weight:800; color:var(--orange); line-height:1; }
+  .streak-fire { font-size:24px; }
+  .streak-label { font-size:12px; color:var(--text-muted); margin-top:4px; }
+  .streak-calendar { flex:1; min-width:200px; }
+  .streak-calendar-title { font-size:13px; font-weight:600; margin-bottom:10px; }
+  .streak-grid { display:flex; flex-wrap:wrap; gap:4px; }
+  .streak-day { width:26px; height:26px; border-radius:5px; background:var(--bg); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:9px; color:var(--text-muted); cursor:pointer; transition:all 0.2s; }
+  .streak-day.studied { background:rgba(59,130,246,0.3); border-color:var(--accent); color:var(--accent); font-weight:700; }
+  .streak-day.today { border-color:var(--orange); box-shadow:0 0 0 2px rgba(245,158,11,0.3); }
+  .streak-day:hover { transform:scale(1.15); }
 
-  /* ═══════════════════════════════════════════
-     QUOTES SECTION (NEW)
-  ═══════════════════════════════════════════ */
-  .quote-carousel {
-    background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.05));
-    border: 1px solid rgba(59,130,246,0.2); border-radius: var(--radius);
-    padding: 50px 40px; text-align: center; position: relative; overflow: hidden; margin-top: 20px;
-  }
-  .quote-text {
-    font-size: 22px; font-weight: 600; line-height: 1.6;
-    letter-spacing: -0.3px; max-width: 700px; margin: 0 auto 20px;
-    transition: opacity 0.5s, transform 0.5s;
-  }
-  .quote-author { font-size: 14px; color: var(--text-muted); }
-  .quote-nav { display: flex; gap: 8px; justify-content: center; margin-top: 24px; }
-  .quote-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); cursor: pointer; transition: all 0.2s; }
-  .quote-dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
-  .quote-icon { font-size: 40px; opacity: 0.15; position: absolute; top: 20px; left: 30px; }
+  /* ─────────── PROGRESS ─────────── */
+  .progress-section { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; }
+  .progress-title { font-size:15px; font-weight:700; margin-bottom:16px; }
+  .progress-item { margin-bottom:16px; }
+  .progress-header { display:flex; justify-content:space-between; margin-bottom:6px; }
+  .progress-name { font-size:13px; font-weight:600; }
+  .progress-pct { font-size:12px; color:var(--text-muted); }
+  .progress-bar-bg { background:var(--bg); border-radius:999px; height:8px; overflow:hidden; }
+  .progress-bar-fill { height:100%; border-radius:999px; transition:width 1.5s cubic-bezier(.4,0,.2,1); }
+  .progress-btns { margin-top:12px; display:flex; gap:6px; flex-wrap:wrap; }
 
-  /* ═══════════════════════════════════════════
-     STUDY TIPS TICKER (NEW)
-  ═══════════════════════════════════════════ */
-  .tips-ticker {
-    background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2);
-    border-radius: 999px; padding: 10px 20px; display: flex; align-items: center;
-    gap: 12px; overflow: hidden; max-width: 100%; margin-bottom: 40px;
-  }
-  .tips-label {
-    background: var(--accent); color: #fff; font-size: 11px; font-weight: 700;
-    padding: 3px 10px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
-  }
-  .tips-text { font-size: 13px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* ─────────── TOOLS GRID ─────────── */
+  .tools-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .tools-right-col { display:flex; flex-direction:column; gap:16px; }
 
-  /* ═══════════════════════════════════════════
-     HOW IT WORKS (NEW)
-  ═══════════════════════════════════════════ */
-  .how-grid {
-    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative;
-    margin-top: 40px;
-  }
-  .how-grid::before {
-    content: ''; position: absolute; top: 30px; left: 12.5%; right: 12.5%;
-    height: 1px; background: linear-gradient(90deg, transparent, var(--border), var(--border), transparent);
-    z-index: 0;
-  }
-  .how-step { text-align: center; padding: 20px; position: relative; z-index: 1; }
-  .how-num {
-    width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--accent);
-    background: var(--bg); display: flex; align-items: center; justify-content: center;
-    font-size: 22px; font-weight: 800; color: var(--accent); margin: 0 auto 16px;
-    position: relative;
-  }
-  .how-num::after {
-    content: ''; position: absolute; inset: -4px; border-radius: 50%;
-    background: rgba(59,130,246,0.08); z-index: -1;
-  }
-  .how-step-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-  .how-step-desc { font-size: 13px; color: var(--text-muted); }
+  /* ─────────── COUNTDOWN ─────────── */
+  .countdown-section { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:24px; margin-top:16px; }
+  .countdown-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:12px; }
+  .countdown-title { font-size:15px; font-weight:700; }
+  .countdown-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:12px; }
+  .countdown-card { background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:16px; text-align:center; transition:border-color 0.2s; }
+  .countdown-card:hover { border-color:var(--accent); }
+  .countdown-exam { font-size:11px; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+  .countdown-days { font-size:40px; font-weight:800; color:var(--accent); line-height:1; }
+  .countdown-dayslabel { font-size:11px; color:var(--text-muted); }
+  .countdown-date { font-size:11px; color:var(--text-muted); margin-top:6px; }
+  .countdown-urgent { color:var(--red); }
+  .countdown-warning { color:var(--orange); }
 
-  /* ═══════════════════════════════════════════
-     EXAM COUNTDOWN (NEW)
-  ═══════════════════════════════════════════ */
-  .countdown-section {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 30px; margin-top: 20px;
-  }
-  .countdown-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; flex-wrap: wrap; gap: 15px; }
-  .countdown-title { font-size: 16px; font-weight: 700; }
-  .countdown-add { padding: 8px 16px; font-size: 13px; }
-  .countdown-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 15px; }
-  .countdown-card {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
-    padding: 20px; text-align: center; transition: border-color 0.2s;
-  }
-  .countdown-card:hover { border-color: var(--accent); }
-  .countdown-exam { font-size: 13px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; }
-  .countdown-days { font-size: 48px; font-weight: 800; color: var(--accent); line-height: 1; }
-  .countdown-dayslabel { font-size: 12px; color: var(--text-muted); }
-  .countdown-date { font-size: 12px; color: var(--text-muted); margin-top: 8px; }
-  .countdown-urgent { color: var(--red); }
-  .countdown-warning { color: var(--orange); }
+  /* ─────────── CHECKBOX ─────────── */
+  .checkbox-group { display:flex; flex-wrap:wrap; gap:10px; margin-top:5px; }
+  .checkbox-item { display:flex; align-items:center; gap:5px; font-size:13px; color:var(--text-main); cursor:pointer; }
 
-  /* ═══════════════════════════════════════════
-     CHECKBOX GROUP
-  ═══════════════════════════════════════════ */
-  .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
-  .checkbox-item { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--text-main); cursor: pointer; }
+  /* ─────────── DASHBOARD ─────────── */
+  .dashboard-area { display:none; margin-bottom:32px; }
+  .dashboard-area.active { display:block; }
+  .profile-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; display:flex; align-items:center; justify-content:space-between; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
+  .profile-info { display:flex; align-items:center; gap:14px; }
+  .avatar { width:42px; height:42px; border-radius:50%; background:var(--accent); display:flex; align-items:center; justify-content:center; font-weight:700; font-size:17px; flex-shrink:0; }
+  .saved-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
+  .saved-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:14px; }
+  .saved-card { background:var(--bg-card); border:1px solid var(--border); padding:18px; border-radius:var(--radius); transition:border 0.2s; }
+  .saved-card:hover { border-color:var(--accent); }
+  .saved-title { font-weight:600; font-size:15px; margin-bottom:4px; }
+  .saved-date { font-size:12px; color:var(--text-muted); margin-bottom:12px; }
+  .saved-card-actions { display:flex; gap:8px; flex-wrap:wrap; }
 
-  /* ═══════════════════════════════════════════
-     USER PROFILE & SAVED TIMETABLES
-  ═══════════════════════════════════════════ */
-  .dashboard-area { display: none; margin-bottom: 40px; }
-  .dashboard-area.active { display: block; }
-  .profile-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 20px; display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 30px;
-  }
-  .profile-info { display: flex; align-items: center; gap: 15px; }
-  .avatar {
-    width: 45px; height: 45px; border-radius: 50%; background: var(--accent);
-    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;
-  }
-  .saved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
-  .saved-card {
-    background: var(--bg-card); border: 1px solid var(--border); padding: 20px;
-    border-radius: var(--radius); transition: border 0.2s;
-  }
-  .saved-card:hover { border-color: var(--accent); }
-  .saved-title { font-weight: 600; font-size: 16px; margin-bottom: 5px; }
-  .saved-date { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+  /* ─────────── TABS & FORM ─────────── */
+  .tabs { display:flex; gap:8px; margin-bottom:24px; flex-wrap:wrap; }
+  .tab { padding:9px 18px; border-radius:8px; font-size:13px; font-weight:600; background:var(--bg-card); border:1px solid var(--border); color:var(--text-muted); cursor:pointer; transition:all 0.2s; }
+  .tab.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .tab-panel { display:none; }
+  .tab-panel.active { display:block; }
+  .form-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+  .form-box { background:var(--bg-card); border:1px solid var(--border); padding:22px; border-radius:var(--radius); }
+  .form-box h3 { font-size:15px; margin-bottom:16px; display:flex; align-items:center; gap:10px; }
+  .step-num { background:var(--accent); color:#fff; width:22px; height:22px; display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:11px; font-weight:700; flex-shrink:0; }
+  .input-group { margin-bottom:14px; }
+  .input-group label { display:block; font-size:12px; color:var(--text-muted); margin-bottom:6px; font-weight:500; }
+  .input-field { width:100%; background:var(--bg); border:1px solid var(--border); color:var(--text-main); padding:11px; border-radius:8px; font-size:13px; font-family:'Inter',sans-serif; outline:none; transition:border 0.2s; }
+  .input-field:focus { border-color:var(--accent); }
+  .btn-full { width:100%; padding:13px; font-size:14px; margin-top:8px; }
 
-  /* ═══════════════════════════════════════════
-     TABS & FORM
-  ═══════════════════════════════════════════ */
-  .tabs { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-  .tab {
-    padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
-    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted);
-    cursor: pointer; transition: all 0.2s;
-  }
-  .tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-  .form-box { background: var(--bg-card); border: 1px solid var(--border); padding: 25px; border-radius: var(--radius); }
-  .form-box h3 { font-size: 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-  .step-num {
-    background: var(--accent); color: #fff; width: 24px; height: 24px;
-    display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 12px; font-weight: 700;
-  }
-  .input-group { margin-bottom: 15px; }
-  .input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
-  .input-field {
-    width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text-main);
-    padding: 12px; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif;
-    outline: none; transition: border 0.2s;
-  }
-  .input-field:focus { border-color: var(--accent); }
-  .btn-full { width: 100%; padding: 14px; font-size: 15px; margin-top: 10px; }
+  /* ─────────── TIMETABLE OUTPUT ─────────── */
+  .output-area { background:var(--bg-card); border:1px solid var(--border); padding:24px; border-radius:var(--radius); margin-top:32px; display:none; }
+  .output-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px; }
+  .output-title { font-size:18px; font-weight:700; }
 
-  /* ═══════════════════════════════════════════
-     TIMETABLE OUTPUT
-  ═══════════════════════════════════════════ */
-  .output-area {
-    background: var(--bg-card); border: 1px solid var(--border); padding: 30px;
-    border-radius: var(--radius); margin-top: 40px; display: none;
+  /* Smart timetable day view */
+  .tt-days-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .tt-day-tabs { display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
+  .tt-day-tab { padding:7px 14px; border-radius:8px; font-size:12px; font-weight:600; background:var(--bg); border:1px solid var(--border); color:var(--text-muted); cursor:pointer; transition:all 0.2s; }
+  .tt-day-tab.active { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .tt-day-schedule { display:none; }
+  .tt-day-schedule.active { display:block; }
+  .tt-slot {
+    display:flex; align-items:stretch; gap:0; border-radius:10px; overflow:hidden;
+    border:1px solid var(--border); margin-bottom:8px; transition:transform 0.15s;
   }
-  .output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .output-title { font-size: 20px; font-weight: 700; }
-  .tt-grid { display: grid; grid-template-columns: 120px repeat(7, 1fr); gap: 5px; overflow-x: auto; }
-  .tt-cell {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
-    padding: 10px; text-align: center; font-size: 11px; min-height: 70px;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-  }
-  .tt-header-cell { background: transparent; border: none; font-weight: 600; color: var(--text-muted); }
-  .subject-name { font-weight: 700; margin-bottom: 4px; font-size: 12px; }
-  .subject-time { font-size: 10px; opacity: 0.8; }
+  .tt-slot:hover { transform:translateX(3px); }
+  .tt-slot-time { background:var(--bg); padding:12px 14px; font-size:11px; font-weight:700; color:var(--text-muted); min-width:95px; display:flex; flex-direction:column; justify-content:center; border-right:1px solid var(--border); }
+  .tt-slot-time .duration { font-size:10px; color:var(--text-muted); margin-top:2px; font-weight:400; }
+  .tt-slot-body { padding:12px 16px; flex:1; display:flex; flex-direction:column; justify-content:center; }
+  .tt-slot-type { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:3px; }
+  .tt-slot-name { font-size:14px; font-weight:700; margin-bottom:2px; }
+  .tt-slot-detail { font-size:11px; color:var(--text-muted); }
+  .tt-slot-icon { font-size:22px; padding:12px 14px; display:flex; align-items:center; }
+  .slot-study { border-left:4px solid var(--accent); }
+  .slot-break { border-left:4px solid var(--green); opacity:0.85; }
+  .slot-recall { border-left:4px solid var(--purple); }
+  .slot-test { border-left:4px solid var(--orange); }
+  .slot-sleep { border-left:4px solid #52525b; opacity:0.7; }
 
-  /* ═══════════════════════════════════════════
-     ARTICLES GRID
-  ═══════════════════════════════════════════ */
-  .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-  .news-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 20px; transition: transform 0.2s; display: block;
-  }
-  .news-card:hover { transform: translateY(-5px); border-color: var(--text-muted); }
-  .news-tag { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
-  .news-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
-  .news-desc { font-size: 13px; color: var(--text-muted); }
+  /* ─────────── QUOTES ─────────── */
+  .quote-carousel { background:linear-gradient(135deg,rgba(59,130,246,0.08),rgba(139,92,246,0.05)); border:1px solid rgba(59,130,246,0.2); border-radius:var(--radius); padding:40px 30px; text-align:center; position:relative; overflow:hidden; margin-top:16px; }
+  .quote-text { font-size:clamp(15px,2.5vw,22px); font-weight:600; line-height:1.6; letter-spacing:-0.3px; max-width:700px; margin:0 auto 16px; transition:opacity 0.5s,transform 0.5s; }
+  .quote-author { font-size:13px; color:var(--text-muted); }
+  .quote-nav { display:flex; gap:8px; justify-content:center; margin-top:20px; }
+  .quote-dot { width:8px; height:8px; border-radius:50%; background:var(--border); cursor:pointer; transition:all 0.2s; }
+  .quote-dot.active { background:var(--accent); width:24px; border-radius:4px; }
+  .quote-icon { font-size:36px; opacity:0.15; position:absolute; top:16px; left:24px; }
 
-  /* ═══════════════════════════════════════════
-     TESTIMONIALS (NEW)
-  ═══════════════════════════════════════════ */
-  .testimonials-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px;
-  }
-  .testi-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 24px; position: relative;
-  }
-  .testi-stars { color: var(--orange); font-size: 14px; margin-bottom: 12px; }
-  .testi-quote { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px; }
-  .testi-author { display: flex; align-items: center; gap: 10px; }
-  .testi-avatar {
-    width: 36px; height: 36px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; color: #fff;
-  }
-  .testi-name { font-size: 14px; font-weight: 600; }
-  .testi-role { font-size: 12px; color: var(--text-muted); }
+  /* ─────────── TIPS TICKER ─────────── */
+  .tips-ticker { background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.2); border-radius:999px; padding:9px 16px; display:flex; align-items:center; gap:10px; overflow:hidden; max-width:100%; margin-bottom:32px; }
+  .tips-label { background:var(--accent); color:#fff; font-size:10px; font-weight:700; padding:3px 10px; border-radius:999px; white-space:nowrap; flex-shrink:0; }
+  .tips-text { font-size:12px; color:var(--text-muted); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 
-  /* ═══════════════════════════════════════════
-     FAQ SECTION (NEW)
-  ═══════════════════════════════════════════ */
-  .faq-list { margin-top: 40px; }
-  .faq-item {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    margin-bottom: 10px; overflow: hidden;
-  }
-  .faq-question {
-    padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;
-    cursor: pointer; font-weight: 600; font-size: 15px; transition: background 0.2s;
-  }
-  .faq-question:hover { background: var(--bg-hover); }
-  .faq-arrow { color: var(--text-muted); transition: transform 0.3s; font-size: 18px; }
-  .faq-answer {
-    max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s;
-    font-size: 14px; color: var(--text-muted); line-height: 1.7;
-    padding: 0 24px;
-  }
-  .faq-item.open .faq-answer { max-height: 200px; padding: 0 24px 20px; }
-  .faq-item.open .faq-arrow { transform: rotate(45deg); }
+  /* ─────────── HOW IT WORKS ─────────── */
+  .how-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; margin-top:32px; }
+  .how-grid::before { content:''; position:absolute; top:30px; left:12.5%; right:12.5%; height:1px; background:linear-gradient(90deg,transparent,var(--border),var(--border),transparent); z-index:0; }
+  .how-step { text-align:center; padding:16px; position:relative; z-index:1; }
+  .how-num { width:56px; height:56px; border-radius:50%; border:2px solid var(--accent); background:var(--bg); display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:800; color:var(--accent); margin:0 auto 14px; position:relative; }
+  .how-num::after { content:''; position:absolute; inset:-4px; border-radius:50%; background:rgba(59,130,246,0.08); z-index:-1; }
+  .how-step-title { font-size:14px; font-weight:700; margin-bottom:6px; }
+  .how-step-desc { font-size:12px; color:var(--text-muted); }
 
-  /* ═══════════════════════════════════════════
-     RATING SYSTEM
-  ═══════════════════════════════════════════ */
-  .rating-section { text-align: center; margin-top: 20px; padding: 40px 20px; border-top: 1px solid var(--border); }
-  .rating-stars { display: inline-flex; gap: 8px; font-size: 36px; cursor: pointer; margin-top: 15px; }
-  .star { color: var(--border); transition: color 0.2s, transform 0.1s; }
-  .star.active { color: var(--orange); }
-  .star:hover { transform: scale(1.1); }
-  .rating-msg { font-size: 14px; color: var(--green); margin-top: 15px; display: none; font-weight: 500; }
+  /* ─────────── ARTICLES ─────────── */
+  .news-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:16px; }
+  .news-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:18px; transition:transform 0.2s; display:block; cursor:pointer; }
+  .news-card:hover { transform:translateY(-4px); border-color:var(--text-muted); }
+  .news-tag { font-size:10px; font-weight:700; color:var(--accent); text-transform:uppercase; margin-bottom:8px; }
+  .news-title { font-size:15px; font-weight:600; margin-bottom:8px; }
+  .news-desc { font-size:12px; color:var(--text-muted); }
 
-  /* ═══════════════════════════════════════════
-     AD PLACEMENTS
-  ═══════════════════════════════════════════ */
-  .ad-space { background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 30px auto; text-align: center; }
-  .ad-leaderboard { width: 100%; max-width: 728px; height: 90px; }
-  .ad-banner { width: 100%; max-width: 970px; height: 90px; }
-  .ad-vertical { position: fixed; top: 100px; width: 160px; height: 600px; background: var(--bg-card); border: 1px dashed var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-transform: uppercase; text-align: center; z-index: 10; }
-  .ad-vertical.left { left: 15px; }
-  .ad-vertical.right { right: 15px; }
+  /* ─────────── TESTIMONIALS ─────────── */
+  .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:32px; }
+  .testi-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; }
+  .testi-stars { color:var(--orange); font-size:13px; margin-bottom:10px; }
+  .testi-quote { font-size:13px; color:var(--text-muted); line-height:1.7; margin-bottom:14px; }
+  .testi-author { display:flex; align-items:center; gap:10px; }
+  .testi-avatar { width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; color:#fff; flex-shrink:0; }
+  .testi-name { font-size:13px; font-weight:600; }
+  .testi-role { font-size:11px; color:var(--text-muted); }
 
-  /* ═══════════════════════════════════════════
-     FOOTER (ENHANCED)
-  ═══════════════════════════════════════════ */
-  footer {
-    background: var(--bg-card); border-top: 1px solid var(--border);
-    padding: 50px 5% 30px; margin-top: 60px;
+  /* ─────────── FAQ ─────────── */
+  .faq-list { margin-top:32px; }
+  .faq-item { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); margin-bottom:8px; overflow:hidden; }
+  .faq-question { padding:18px 22px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-weight:600; font-size:14px; transition:background 0.2s; }
+  .faq-question:hover { background:var(--bg-hover); }
+  .faq-arrow { color:var(--text-muted); transition:transform 0.3s; font-size:18px; flex-shrink:0; margin-left:12px; }
+  .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.4s ease,padding 0.3s; font-size:13px; color:var(--text-muted); line-height:1.7; padding:0 22px; }
+  .faq-item.open .faq-answer { max-height:300px; padding:0 22px 18px; }
+  .faq-item.open .faq-arrow { transform:rotate(45deg); }
+
+  /* ─────────── RATING ─────────── */
+  .rating-section { text-align:center; padding:40px 20px; border-top:1px solid var(--border); }
+  .rating-stars { display:inline-flex; gap:8px; font-size:34px; cursor:pointer; margin-top:12px; }
+  .star { color:var(--border); transition:color 0.2s,transform 0.1s; }
+  .star.active { color:var(--orange); }
+  .star:hover { transform:scale(1.1); }
+  .rating-msg { font-size:13px; color:var(--green); margin-top:12px; display:none; font-weight:500; }
+
+  /* ─────────── MODALS ─────────── */
+  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(5px); display:none; align-items:center; justify-content:center; z-index:1000; padding:16px; }
+  .modal-overlay.open { display:flex; }
+  .auth-box, .article-modal-box { background:var(--bg-card); border:1px solid var(--border); width:100%; max-width:400px; padding:32px 24px; border-radius:var(--radius); position:relative; text-align:center; }
+  .article-modal-box { max-width:680px; max-height:85vh; overflow-y:auto; text-align:left; }
+  .close-modal { position:absolute; top:12px; right:16px; background:transparent; border:none; color:var(--text-muted); font-size:20px; cursor:pointer; }
+
+  /* ─────────── TOAST ─────────── */
+  .toast { position:fixed; bottom:24px; right:20px; z-index:9999; background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:14px 18px; font-size:13px; display:flex; align-items:center; gap:10px; transform:translateX(120%); transition:transform 0.4s cubic-bezier(.4,0,.2,1); box-shadow:0 20px 60px rgba(0,0,0,0.5); max-width:300px; }
+  .toast.show { transform:translateX(0); }
+  .toast-icon { font-size:18px; flex-shrink:0; }
+
+  /* ─────────── READING BAR ─────────── */
+  .reading-bar { position:fixed; top:60px; left:0; height:3px; background:linear-gradient(90deg,var(--accent),var(--purple)); width:0%; z-index:99; transition:width 0.1s; }
+
+  /* ─────────── DIVIDER ─────────── */
+  .section-divider { width:100%; height:1px; background:linear-gradient(90deg,transparent,var(--border),transparent); margin:0; }
+
+  /* ─────────── FOOTER ─────────── */
+  footer { background:var(--bg-card); border-top:1px solid var(--border); padding:40px 5% 24px; margin-top:50px; }
+  .footer-inner { max-width:1200px; margin:0 auto; }
+  .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:32px; margin-bottom:32px; }
+  .footer-brand .logo { font-size:20px; margin-bottom:10px; display:block; }
+  .footer-brand p { font-size:13px; color:var(--text-muted); line-height:1.7; max-width:260px; }
+  .footer-col-title { font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px; color:var(--text-muted); }
+  .footer-col a { display:block; font-size:13px; color:var(--text-muted); margin-bottom:9px; transition:color 0.2s; }
+  .footer-col a:hover { color:var(--text-main); }
+  .footer-bottom { border-top:1px solid var(--border); padding-top:20px; display:flex; justify-content:space-between; align-items:center; font-size:12px; color:var(--text-muted); flex-wrap:wrap; gap:10px; }
+  .footer-socials { display:flex; gap:10px; }
+  .social-btn { width:34px; height:34px; border-radius:8px; background:var(--bg-hover); border:1px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:14px; cursor:pointer; transition:all 0.2s; }
+  .social-btn:hover { border-color:var(--accent); color:var(--accent); }
+
+  /* ─────────── SCROLL REVEAL ─────────── */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity 0.6s ease,transform 0.6s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ─────────── PRINT STYLES ─────────── */
+  @media print {
+    /* Hide everything */
+    body > *:not(#printTarget) { display: none !important; }
+    nav, footer, .hero, .stats-banner, .section-divider,
+    .ad-leaderboard-wrap, .ad-rect-wrap, .ad-in-content,
+    .reading-bar, .toast, .modal-overlay,
+    #features, #how, #tools, #resources, #faq, #youtube,
+    .rating-section, .tips-ticker, .tabs, .form-grid,
+    .dashboard-area, .output-header, .tt-day-tabs,
+    .testimonials-grid, .faq-list, .quote-carousel { display: none !important; }
+
+    #printTarget { display: block !important; }
+    .output-area { display: block !important; border: none !important; padding: 0 !important; background: #fff !important; }
+    .output-title { color: #000 !important; font-size: 20px !important; margin-bottom: 12px !important; display: block !important; }
+    .tt-slot { break-inside: avoid; border: 1px solid #ddd !important; margin-bottom: 6px !important; }
+    .tt-slot-time, .tt-slot-body { color: #000 !important; background: #fff !important; }
+    .tt-slot-name { color: #000 !important; }
+    .tt-slot-detail { color: #555 !important; }
+    .tt-slot-type { color: #333 !important; }
+    .tt-day-schedule.active { display: block !important; }
+    .tt-day-schedule { display: block !important; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   }
-  .footer-inner { max-width: 1200px; margin: 0 auto; }
-  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-  .footer-brand .logo { font-size: 22px; margin-bottom: 12px; display: block; }
-  .footer-brand p { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-width: 280px; }
-  .footer-col-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; color: var(--text-muted); }
-  .footer-col a { display: block; font-size: 14px; color: var(--text-muted); margin-bottom: 10px; transition: color 0.2s; }
-  .footer-col a:hover { color: var(--text-main); }
-  .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: var(--text-muted); flex-wrap: wrap; gap: 10px; }
-  .footer-socials { display: flex; gap: 12px; }
-  .social-btn {
-    width: 36px; height: 36px; border-radius: 8px; background: var(--bg-hover);
-    border: 1px solid var(--border); display: flex; align-items: center; justify-content: center;
-    font-size: 15px; cursor: pointer; transition: all 0.2s;
+
+  /* ─────────── RESPONSIVE ─────────── */
+  @media (max-width: 1100px) {
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
   }
-  .social-btn:hover { border-color: var(--accent); color: var(--accent); }
-
-  /* ═══════════════════════════════════════════
-     SCROLL ANIMATIONS
-  ═══════════════════════════════════════════ */
-  .reveal {
-    opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease;
-  }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ═══════════════════════════════════════════
-     AUTH MODAL
-  ═══════════════════════════════════════════ */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 1000; }
-  .modal-overlay.open { display: flex; }
-  .auth-box, .article-modal-box { background: var(--bg-card); border: 1px solid var(--border); width: 100%; max-width: 400px; padding: 40px 30px; border-radius: var(--radius); position: relative; text-align: center; }
-  .article-modal-box { max-width: 700px; max-height: 80vh; overflow-y: auto; text-align: left; }
-  .close-modal { position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
-
-  /* ═══════════════════════════════════════════
-     RESPONSIVE
-  ═══════════════════════════════════════════ */
-  @media(max-width: 1550px) { .ad-vertical { display: none; } }
-  @media(max-width: 900px) {
-    .features-grid { grid-template-columns: 1fr 1fr; }
+  @media (max-width: 900px) {
     .how-grid { grid-template-columns: 1fr 1fr; }
     .how-grid::before { display: none; }
-    .testimonials-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr 1fr; }
     .footer-top { grid-template-columns: 1fr 1fr; }
     .stats-inner { grid-template-columns: 1fr 1fr; }
+    .tools-grid { grid-template-columns: 1fr; }
   }
-  @media(max-width: 768px) {
+  @media (max-width: 640px) {
+    nav { padding: 0 4%; height: 56px; }
     .nav-links { display: none; }
-    .hero h1 { font-size: 36px; }
-    .tt-grid { grid-template-columns: 100px repeat(7, 140px); }
+    .hero { padding: 50px 4% 40px; }
+    .hero-actions .btn { padding: 12px 18px; font-size: 14px; }
     .features-grid { grid-template-columns: 1fr; }
     .how-grid { grid-template-columns: 1fr; }
     .footer-top { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .form-grid { grid-template-columns: 1fr; }
+    .timer-ring-svg { width: 160px; height: 160px; }
+    .timer-ring-bg, .timer-ring-progress { cx: 80; cy: 80; r: 68; }
+    .streak-section { flex-direction: column; }
+    .countdown-list { grid-template-columns: 1fr 1fr; }
+    .tabs { gap: 6px; }
+    .tab { padding: 8px 12px; font-size: 12px; }
+    .saved-grid { grid-template-columns: 1fr; }
+    .tt-slot-time { min-width: 80px; padding: 10px 10px; }
   }
-
-  /* ═══════════════════════════════════════════
-     SECTION DIVIDER
-  ═══════════════════════════════════════════ */
-  .section-divider {
-    width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent, var(--border), transparent);
-    margin: 0;
-  }
-
-  /* ═══════════════════════════════════════════
-     NOTIFICATION TOAST (NEW)
-  ═══════════════════════════════════════════ */
-  .toast {
-    position: fixed; bottom: 30px; right: 30px; z-index: 9999;
-    background: var(--bg-card); border: 1px solid var(--border);
-    border-radius: 10px; padding: 16px 20px; font-size: 14px;
-    display: flex; align-items: center; gap: 12px;
-    transform: translateX(120%); transition: transform 0.4s cubic-bezier(.4,0,.2,1);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5); max-width: 320px;
-  }
-  .toast.show { transform: translateX(0); }
-  .toast-icon { font-size: 20px; flex-shrink: 0; }
-
-  /* ═══════════════════════════════════════════
-     PROGRESS TOP BAR
-  ═══════════════════════════════════════════ */
-  .reading-bar {
-    position: fixed; top: 70px; left: 0; height: 3px;
-    background: linear-gradient(90deg, var(--accent), var(--purple));
-    width: 0%; z-index: 99; transition: width 0.1s;
+  @media (max-width: 380px) {
+    .countdown-list { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: 1fr 1fr; }
   }
   </style>
 </head>
 <body>
 
-<!-- Progress Reading Bar -->
 <div class="reading-bar" id="readingBar"></div>
 
-<!-- Toast Notification -->
 <div class="toast" id="toast">
   <span class="toast-icon" id="toastIcon">✅</span>
-  <span id="toastMsg">Timetable generated!</span>
+  <span id="toastMsg">Done!</span>
 </div>
-
-<div class="ad-vertical left">Left Ad<br>(160x600)</div>
-<div class="ad-vertical right">Right Ad<br>(160x600)</div>
 
 <!-- AUTH MODAL -->
 <div class="modal-overlay" id="authModal">
   <div class="auth-box">
     <button class="close-modal" onclick="closeAuth()">✕</button>
-    <h2>Join Studytable</h2>
-    <p>Enter your name and age to generate and save your timetables.</p>
-    <div class="input-group" style="text-align: left;">
+    <h2 style="margin-bottom:8px">Join Studytable</h2>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:20px">Enter your name and age to generate and save timetables.</p>
+    <div class="input-group" style="text-align:left">
       <label>Your Name</label>
       <input type="text" id="authName" class="input-field" placeholder="E.g. Rahul">
     </div>
-    <div class="input-group" style="text-align: left;">
+    <div class="input-group" style="text-align:left">
       <label>Your Age</label>
       <input type="number" id="authAge" class="input-field" placeholder="E.g. 16" min="10" max="99">
     </div>
@@ -648,8 +450,8 @@
 <div class="modal-overlay" id="articleModal">
   <div class="article-modal-box">
     <button class="close-modal" onclick="closeArticle()">✕</button>
-    <h2 id="modalArticleTitle">Article Title</h2>
-    <div class="article-content" id="modalArticleContent"></div>
+    <h2 id="modalArticleTitle" style="margin-bottom:16px">Article</h2>
+    <div id="modalArticleContent"></div>
   </div>
 </div>
 
@@ -659,7 +461,7 @@
   <div class="nav-links">
     <a href="#generator">Generator</a>
     <a href="#tools">Tools</a>
-    <a href="#resources">Study Guides</a>
+    <a href="#resources">Guides</a>
     <a href="#youtube">YouTube</a>
     <a href="#faq">FAQ</a>
   </div>
@@ -668,6 +470,13 @@
   </div>
 </nav>
 
+<!-- TOP AD LEADERBOARD -->
+<div class="ad-leaderboard-wrap">
+  <div class="ad-leaderboard-inner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;max-width:100%;height:90px" data-ad-client="ca-pub-9335905935507660" data-ad-slot="YOUR_AD_SLOT_1"></ins>
+  </div>
+</div>
+
 <!-- HERO -->
 <div class="hero">
   <div class="orb orb-1"></div>
@@ -675,32 +484,20 @@
   <div class="hero-glow"></div>
   <div class="hero-badge"><span class="dot"></span> Trusted by 50,000+ Indian Students</div>
   <h1>Plan Your Study,<br><span>Achieve Your Goals</span></h1>
-  <p>Create a smart, balanced study schedule for JEE, NEET, Boards & more. Save it, follow it, and see the results.</p>
+  <p>Create a smart, detailed study schedule for JEE, NEET, Boards & more with breaks, recall sessions, and unit-level planning.</p>
   <div class="hero-actions">
-    <button class="btn" style="padding: 14px 28px; font-size: 16px;" onclick="scrollToGen()">🚀 Start Planning Now</button>
-    <button class="btn btn-outline" style="padding: 14px 28px; font-size: 16px;" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">⏱ Open Pomodoro Timer</button>
+    <button class="btn" style="padding:13px 24px;font-size:15px" onclick="scrollToGen()">🚀 Start Planning Now</button>
+    <button class="btn btn-outline" style="padding:13px 24px;font-size:15px" onclick="document.getElementById('tools').scrollIntoView({behavior:'smooth'})">⏱ Open Pomodoro Timer</button>
   </div>
 </div>
 
 <!-- STATS BANNER -->
 <div class="stats-banner">
   <div class="stats-inner">
-    <div class="stat-item">
-      <div class="stat-num" data-target="50000">0</div>
-      <div class="stat-label">Students Using Studytable</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" data-target="120000">0</div>
-      <div class="stat-label">Timetables Generated</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" data-target="98">0</div>
-      <div class="stat-label">% Free — Always</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num" data-target="4">0</div>
-      <div class="stat-label">Exam Modes (JEE, NEET & more)</div>
-    </div>
+    <div class="stat-item"><div class="stat-num" data-target="50000">0</div><div class="stat-label">Students Using Studytable</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="120000">0</div><div class="stat-label">Timetables Generated</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="98">0</div><div class="stat-label">% Free — Always</div></div>
+    <div class="stat-item"><div class="stat-num" data-target="4">0</div><div class="stat-label">Exam Modes</div></div>
   </div>
 </div>
 
@@ -709,66 +506,33 @@
   <div class="section-title">How It Works</div>
   <div class="section-sub">Get your personalised timetable in under 60 seconds.</div>
   <div class="how-grid">
-    <div class="how-step">
-      <div class="how-num">1</div>
-      <div class="how-step-title">Choose Your Exam</div>
-      <div class="how-step-desc">Pick from JEE, NEET, School boards or create a fully custom plan.</div>
-    </div>
-    <div class="how-step">
-      <div class="how-num">2</div>
-      <div class="how-step-title">Set Your Hours</div>
-      <div class="how-step-desc">Tell us how many hours per day you can study and your wake-up time.</div>
-    </div>
-    <div class="how-step">
-      <div class="how-num">3</div>
-      <div class="how-step-title">Generate Instantly</div>
-      <div class="how-step-desc">Our algorithm creates a balanced, subject-rotating weekly timetable.</div>
-    </div>
-    <div class="how-step">
-      <div class="how-num">4</div>
-      <div class="how-step-title">Save & Follow</div>
-      <div class="how-step-desc">Save multiple timetables, print them or use the Pomodoro timer to stay on track.</div>
-    </div>
+    <div class="how-step"><div class="how-num">1</div><div class="how-step-title">Choose Your Exam</div><div class="how-step-desc">Pick from JEE, NEET, School boards or create a fully custom plan.</div></div>
+    <div class="how-step"><div class="how-num">2</div><div class="how-step-title">Set Your Hours</div><div class="how-step-desc">Tell us how many hours per day you can study and your wake-up time.</div></div>
+    <div class="how-step"><div class="how-num">3</div><div class="how-step-title">Generate Instantly</div><div class="how-step-desc">Get a unit-level detailed plan with breaks, recall, and quick tests.</div></div>
+    <div class="how-step"><div class="how-num">4</div><div class="how-step-title">Save & Follow</div><div class="how-step-desc">Save multiple timetables, print them or use the Pomodoro timer to stay on track.</div></div>
   </div>
 </div>
 
 <div class="section-divider"></div>
+
+<!-- IN-CONTENT AD -->
+<div style="max-width:1200px;margin:0 auto;padding:0 5%">
+  <div class="ad-in-content">
+    <ins class="adsbygoogle" style="display:inline-block;width:100%;max-width:970px;height:90px" data-ad-client="ca-pub-9335905935507660" data-ad-slot="YOUR_AD_SLOT_2"></ins>
+  </div>
+</div>
 
 <!-- FEATURES -->
 <div class="section reveal" id="features">
   <div class="section-title">Everything You Need to Excel</div>
   <div class="section-sub">Purpose-built tools for Indian competitive exam aspirants.</div>
   <div class="features-grid">
-    <div class="feature-card">
-      <div class="feature-icon">📅</div>
-      <div class="feature-title">Smart Timetable Generator</div>
-      <div class="feature-desc">Automatically balances subjects across the week with time-based slots and break scheduling.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⏱️</div>
-      <div class="feature-title">Built-in Pomodoro Timer</div>
-      <div class="feature-desc">Study in focused 25-min sprints. Short and long breaks are tracked automatically.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">🔥</div>
-      <div class="feature-title">Study Streak Tracker</div>
-      <div class="feature-desc">Mark days you studied and maintain your streak. Consistency is everything.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">📊</div>
-      <div class="feature-title">Subject Progress Bars</div>
-      <div class="feature-desc">Track how much of each subject you've covered. Visual progress keeps you motivated.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">⏰</div>
-      <div class="feature-title">Exam Countdown</div>
-      <div class="feature-desc">See exactly how many days remain until JEE, NEET, or your custom exam date.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-icon">💡</div>
-      <div class="feature-title">Study Tips & Articles</div>
-      <div class="feature-desc">Curated strategies from toppers for JEE, NEET, boards, and time management.</div>
-    </div>
+    <div class="feature-card"><div class="feature-icon">📅</div><div class="feature-title">Smart Unit-Level Timetable</div><div class="feature-desc">Schedules study by chapter/unit with recall sessions, short tests, and timed breaks — not just subject blocks.</div></div>
+    <div class="feature-card"><div class="feature-icon">⏱️</div><div class="feature-title">Built-in Pomodoro Timer</div><div class="feature-desc">Study in focused 25-min sprints. Short and long breaks are tracked automatically.</div></div>
+    <div class="feature-card"><div class="feature-icon">🔥</div><div class="feature-title">Study Streak Tracker</div><div class="feature-desc">Mark days you studied and maintain your streak. Consistency is everything.</div></div>
+    <div class="feature-card"><div class="feature-icon">📊</div><div class="feature-title">Subject Progress Bars</div><div class="feature-desc">Track how much of each subject you've covered. Visual progress keeps you motivated.</div></div>
+    <div class="feature-card"><div class="feature-icon">⏰</div><div class="feature-title">Exam Countdown</div><div class="feature-desc">See exactly how many days remain until JEE, NEET, or your custom exam date.</div></div>
+    <div class="feature-card"><div class="feature-icon">💡</div><div class="feature-title">Study Tips & Articles</div><div class="feature-desc">Curated strategies from toppers for JEE, NEET, boards, and time management.</div></div>
   </div>
 </div>
 
@@ -778,28 +542,32 @@
 <div class="section" id="generator">
   <div class="dashboard-area" id="userDashboard">
     <div class="profile-card">
-      <div class="profile-info"><div class="avatar" id="userAvatar">U</div>
-      <div><div style="font-weight: 600;">Welcome back!</div><div style="font-size: 13px; color: var(--text-muted);" id="userInfoDisplay"></div></div></div>
-      <button class="btn btn-outline" onclick="signOut()">Log Out</button>
+      <div class="profile-info">
+        <div class="avatar" id="userAvatar">U</div>
+        <div><div style="font-weight:600;font-size:15px">Welcome back!</div><div style="font-size:12px;color:var(--text-muted)" id="userInfoDisplay"></div></div>
+      </div>
+      <button class="btn btn-outline" style="font-size:12px;padding:8px 14px" onclick="signOut()">Log Out</button>
     </div>
-    <h3 style="margin-bottom: 15px;">Saved Timetables</h3>
+    <div class="saved-header">
+      <h3 style="font-size:16px;font-weight:700">Saved Timetables</h3>
+      <button class="btn btn-danger" style="font-size:12px;padding:7px 14px" onclick="clearAllSaved()">🗑 Clear All</button>
+    </div>
     <div class="saved-grid" id="savedGrid"></div>
   </div>
 
   <div class="section-title">Timetable Generator</div>
-  <div class="section-sub">Fill in your details and get a personalised weekly schedule instantly.</div>
+  <div class="section-sub">Get a detailed unit-by-unit weekly schedule with breaks, recall, and quick tests.</div>
 
-  <!-- TIPS TICKER -->
   <div class="tips-ticker">
     <span class="tips-label">💡 TIP</span>
     <span class="tips-text" id="tipsTicker">Loading tip...</span>
   </div>
 
   <div class="tabs">
-    <div class="tab active" onclick="switchTab('jee', this)">🎯 JEE Prep</div>
-    <div class="tab" onclick="switchTab('neet', this)">🔬 NEET Prep</div>
-    <div class="tab" onclick="switchTab('school', this)">📚 Class 6-10</div>
-    <div class="tab" onclick="switchTab('custom', this)">✏️ Custom</div>
+    <div class="tab active" onclick="switchTab('jee',this)">🎯 JEE Prep</div>
+    <div class="tab" onclick="switchTab('neet',this)">🔬 NEET Prep</div>
+    <div class="tab" onclick="switchTab('school',this)">📚 Class 6-10</div>
+    <div class="tab" onclick="switchTab('custom',this)">✏️ Custom</div>
   </div>
 
   <div class="tab-panel active" id="panel-jee">
@@ -813,13 +581,13 @@
         </div>
       </div>
       <div class="form-box">
-        <h3><span class="step-num">2</span> Daily Hours & Wakeup</h3>
-        <input type="number" id="jeeHours" class="input-field" value="8" min="4" max="16">
-        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
-        <input type="time" id="jeeWake" class="input-field" value="06:00">
+        <h3><span class="step-num">2</span> Daily Hours & Wake-up</h3>
+        <div class="input-group"><label>Study hours per day</label><input type="number" id="jeeHours" class="input-field" value="8" min="4" max="16"></div>
+        <div class="input-group"><label>Wake up time</label><input type="time" id="jeeWake" class="input-field" value="06:00"></div>
       </div>
       <div class="form-box">
-        <h3><span class="step-num">3</span> Action</h3>
+        <h3><span class="step-num">3</span> Generate</h3>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Creates a unit-level plan with recall & test sessions per day.</p>
         <button class="btn btn-full" onclick="aiGenerate('JEE')">⚡ Generate JEE Timetable</button>
       </div>
     </div>
@@ -836,13 +604,13 @@
         </div>
       </div>
       <div class="form-box">
-        <h3><span class="step-num">2</span> Daily Hours</h3>
-        <input type="number" id="neetHours" class="input-field" value="9" min="4" max="16">
-        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
-        <input type="time" id="neetWake" class="input-field" value="06:00">
+        <h3><span class="step-num">2</span> Daily Hours & Wake-up</h3>
+        <div class="input-group"><label>Study hours per day</label><input type="number" id="neetHours" class="input-field" value="9" min="4" max="16"></div>
+        <div class="input-group"><label>Wake up time</label><input type="time" id="neetWake" class="input-field" value="06:00"></div>
       </div>
       <div class="form-box">
-        <h3><span class="step-num">3</span> Action</h3>
+        <h3><span class="step-num">3</span> Generate</h3>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">NEET-optimised plan with Biology split into Botany & Zoology units.</p>
         <button class="btn btn-full" onclick="aiGenerate('NEET')">⚡ Generate NEET Timetable</button>
       </div>
     </div>
@@ -853,22 +621,22 @@
       <div class="form-box">
         <h3><span class="step-num">1</span> Choose Class</h3>
         <select id="schoolClass" class="input-field">
-          <option value="6th">Class 6th</option>
-          <option value="7th">Class 7th</option>
-          <option value="8th">Class 8th</option>
-          <option value="9th">Class 9th</option>
-          <option value="10th">Class 10th</option>
+          <option value="6">Class 6th</option>
+          <option value="7">Class 7th</option>
+          <option value="8">Class 8th</option>
+          <option value="9">Class 9th</option>
+          <option value="10">Class 10th</option>
         </select>
       </div>
       <div class="form-box">
-        <h3><span class="step-num">2</span> Daily Hours</h3>
-        <input type="number" id="schoolHours" class="input-field" value="5" min="2" max="12">
-        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
-        <input type="time" id="schoolWake" class="input-field" value="07:00">
+        <h3><span class="step-num">2</span> Daily Hours & Wake-up</h3>
+        <div class="input-group"><label>Study hours per day</label><input type="number" id="schoolHours" class="input-field" value="5" min="2" max="12"></div>
+        <div class="input-group"><label>Wake up time</label><input type="time" id="schoolWake" class="input-field" value="07:00"></div>
       </div>
       <div class="form-box">
-        <h3><span class="step-num">3</span> Action</h3>
-        <button class="btn btn-full" onclick="aiGenerate('SCHOOL')">⚡ Apply Class Template</button>
+        <h3><span class="step-num">3</span> Generate</h3>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Chapter-wise plan with revision and practice exercises built in.</p>
+        <button class="btn btn-full" onclick="aiGenerate('SCHOOL')">⚡ Generate School Timetable</button>
       </div>
     </div>
   </div>
@@ -877,53 +645,61 @@
     <div class="form-grid">
       <div class="form-box">
         <h3><span class="step-num">1</span> Goal</h3>
-        <input type="text" id="customGoal" class="input-field" placeholder="e.g. UPSC / Board Prep">
+        <div class="input-group"><label>Exam / Goal</label><input type="text" id="customGoal" class="input-field" placeholder="e.g. UPSC / Board Prep"></div>
+        <div class="input-group"><label>Subjects (comma separated)</label><input type="text" id="customSubjects" class="input-field" placeholder="e.g. History, Polity, Maths"></div>
       </div>
       <div class="form-box">
-        <h3><span class="step-num">2</span> Daily Hours</h3>
-        <input type="number" id="customHours" class="input-field" value="6" min="1" max="18">
-        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
-        <input type="time" id="customWake" class="input-field" value="08:00">
+        <h3><span class="step-num">2</span> Daily Hours & Wake-up</h3>
+        <div class="input-group"><label>Study hours per day</label><input type="number" id="customHours" class="input-field" value="6" min="1" max="18"></div>
+        <div class="input-group"><label>Wake up time</label><input type="time" id="customWake" class="input-field" value="08:00"></div>
       </div>
       <div class="form-box">
-        <h3><span class="step-num">3</span> Action</h3>
+        <h3><span class="step-num">3</span> Generate</h3>
+        <p style="font-size:12px;color:var(--text-muted);margin-bottom:12px">Smart blocks with spaced recall and self-tests for any exam.</p>
         <button class="btn btn-full" onclick="aiGenerate('Custom')">⚡ Generate Custom Plan</button>
       </div>
     </div>
   </div>
 
-  <div class="output-area" id="ttOutput">
+  <!-- TIMETABLE OUTPUT -->
+  <div class="output-area" id="ttOutput" id="printTarget">
     <div class="output-header">
       <div class="output-title" id="outputTitle">Your Timetable</div>
-      <button class="btn btn-outline" onclick="window.print()">🖨 Print / PDF</button>
+      <button class="btn btn-outline" style="font-size:12px;padding:8px 16px" onclick="printTimetable()">🖨 Print / Save PDF</button>
     </div>
-    <div class="tt-grid" id="outputGrid"></div>
+    <div class="tt-day-tabs" id="dayTabs"></div>
+    <div id="daySchedules"></div>
+  </div>
+</div>
+
+<!-- MID-PAGE AD -->
+<div style="max-width:1200px;margin:0 auto;padding:0 5%">
+  <div class="ad-in-content">
+    <ins class="adsbygoogle" style="display:inline-block;width:100%;max-width:970px;height:90px" data-ad-client="ca-pub-9335905935507660" data-ad-slot="YOUR_AD_SLOT_3"></ins>
   </div>
 </div>
 
 <div class="section-divider"></div>
 
-<!-- TOOLS SECTION -->
+<!-- TOOLS -->
 <div class="section reveal" id="tools">
   <div class="section-title">Study Tools</div>
   <div class="section-sub">Everything you need to study smarter, not just harder.</div>
 
-  <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-
-    <!-- POMODORO TIMER -->
+  <div class="tools-grid">
+    <!-- POMODORO -->
     <div class="pomodoro-section">
       <div class="pomodoro-title">⏱️ Pomodoro Timer</div>
       <div class="pomodoro-sub">Study in focused sprints. 25 min focus → 5 min break.</div>
-      <div style="display:flex; gap:8px; justify-content:center; margin-bottom:24px; flex-wrap:wrap;">
-        <button class="timer-mode-btn active" onclick="setTimerMode('focus',this)">Focus (25m)</button>
-        <button class="timer-mode-btn" onclick="setTimerMode('short',this)">Short Break (5m)</button>
-        <button class="timer-mode-btn" onclick="setTimerMode('long',this)">Long Break (15m)</button>
+      <div class="timer-modes-wrap">
+        <button class="timer-mode-btn active" onclick="setTimerMode('focus',this)">Focus 25m</button>
+        <button class="timer-mode-btn" onclick="setTimerMode('short',this)">Break 5m</button>
+        <button class="timer-mode-btn" onclick="setTimerMode('long',this)">Long 15m</button>
       </div>
       <div class="timer-ring-container">
-        <svg class="timer-ring-svg" width="200" height="200" viewBox="0 0 200 200">
-          <circle class="timer-ring-bg" cx="100" cy="100" r="85"/>
-          <circle class="timer-ring-progress" id="timerRing" cx="100" cy="100" r="85"
-            stroke-dasharray="534" stroke-dashoffset="0"/>
+        <svg class="timer-ring-svg" width="180" height="180" viewBox="0 0 180 180">
+          <circle class="timer-ring-bg" cx="90" cy="90" r="76"/>
+          <circle class="timer-ring-progress" id="timerRing" cx="90" cy="90" r="76" stroke-dasharray="478" stroke-dashoffset="0"/>
         </svg>
         <div class="timer-display">
           <div class="timer-time" id="timerDisplay">25:00</div>
@@ -936,13 +712,12 @@
       </div>
       <div class="timer-sessions">
         Sessions completed: <span id="sessionCount">0</span>
-        <div style="margin-top:8px;" id="sessionDots"></div>
+        <div style="margin-top:8px" id="sessionDots"></div>
       </div>
     </div>
 
-    <!-- STREAK + PROGRESS (stacked) -->
-    <div style="display:flex; flex-direction:column; gap:20px;">
-
+    <!-- RIGHT COLUMN -->
+    <div class="tools-right-col">
       <!-- STREAK -->
       <div class="streak-section">
         <div class="streak-main">
@@ -953,47 +728,41 @@
         <div class="streak-calendar">
           <div class="streak-calendar-title">Last 28 Days</div>
           <div class="streak-grid" id="streakGrid"></div>
-          <button class="btn btn-outline" style="margin-top:14px;font-size:12px;padding:8px 16px;" onclick="markTodayStudied()">✅ Mark Today as Studied</button>
+          <button class="btn btn-outline" style="margin-top:12px;font-size:12px;padding:8px 14px" onclick="markTodayStudied()">✅ Mark Today Studied</button>
         </div>
       </div>
-
       <!-- PROGRESS -->
       <div class="progress-section">
         <div class="progress-title">📊 Subject Progress</div>
         <div id="progressBars">
-          <div class="progress-item">
-            <div class="progress-header"><span class="progress-name">Physics</span><span class="progress-pct" id="pctPhysics">0%</span></div>
-            <div class="progress-bar-bg"><div class="progress-bar-fill" id="barPhysics" style="width:0%;background:#3b82f6"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-header"><span class="progress-name">Chemistry</span><span class="progress-pct" id="pctChemistry">0%</span></div>
-            <div class="progress-bar-bg"><div class="progress-bar-fill" id="barChemistry" style="width:0%;background:#10b981"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-header"><span class="progress-name">Maths</span><span class="progress-pct" id="pctMaths">0%</span></div>
-            <div class="progress-bar-bg"><div class="progress-bar-fill" id="barMaths" style="width:0%;background:#f59e0b"></div></div>
-          </div>
-          <div class="progress-item">
-            <div class="progress-header"><span class="progress-name">Biology</span><span class="progress-pct" id="pctBiology">0%</span></div>
-            <div class="progress-bar-bg"><div class="progress-bar-fill" id="barBiology" style="width:0%;background:#8b5cf6"></div></div>
-          </div>
+          <div class="progress-item"><div class="progress-header"><span class="progress-name">Physics</span><span class="progress-pct" id="pctPhysics">0%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" id="barPhysics" style="width:0%;background:#3b82f6"></div></div></div>
+          <div class="progress-item"><div class="progress-header"><span class="progress-name">Chemistry</span><span class="progress-pct" id="pctChemistry">0%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" id="barChemistry" style="width:0%;background:#10b981"></div></div></div>
+          <div class="progress-item"><div class="progress-header"><span class="progress-name">Maths</span><span class="progress-pct" id="pctMaths">0%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" id="barMaths" style="width:0%;background:#f59e0b"></div></div></div>
+          <div class="progress-item"><div class="progress-header"><span class="progress-name">Biology</span><span class="progress-pct" id="pctBiology">0%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" id="barBiology" style="width:0%;background:#8b5cf6"></div></div></div>
         </div>
-        <div style="margin-top:15px; display:flex; gap:8px; flex-wrap:wrap;">
-          <button class="btn btn-outline" style="font-size:12px;padding:8px 14px;" onclick="addProgress('Physics',10)">+10% Physics</button>
-          <button class="btn btn-outline" style="font-size:12px;padding:8px 14px;" onclick="addProgress('Chemistry',10)">+10% Chemistry</button>
-          <button class="btn btn-outline" style="font-size:12px;padding:8px 14px;" onclick="addProgress('Maths',10)">+10% Maths</button>
-          <button class="btn btn-outline" style="font-size:12px;padding:8px 14px;" onclick="addProgress('Biology',10)">+10% Biology</button>
+        <div class="progress-btns">
+          <button class="btn btn-outline" style="font-size:11px;padding:7px 12px" onclick="addProgress('Physics',10)">+10% Physics</button>
+          <button class="btn btn-outline" style="font-size:11px;padding:7px 12px" onclick="addProgress('Chemistry',10)">+10% Chem</button>
+          <button class="btn btn-outline" style="font-size:11px;padding:7px 12px" onclick="addProgress('Maths',10)">+10% Maths</button>
+          <button class="btn btn-outline" style="font-size:11px;padding:7px 12px" onclick="addProgress('Biology',10)">+10% Bio</button>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- EXAM COUNTDOWN -->
-  <div class="countdown-section reveal" style="margin-top:20px;">
+  <!-- COUNTDOWN -->
+  <div class="countdown-section reveal">
     <div class="countdown-header">
       <div class="countdown-title">⏰ Exam Countdown</div>
     </div>
     <div class="countdown-list" id="countdownList"></div>
+  </div>
+</div>
+
+<!-- AD BETWEEN TOOLS AND QUOTES -->
+<div style="max-width:1200px;margin:0 auto;padding:0 5%">
+  <div class="ad-in-content">
+    <ins class="adsbygoogle" style="display:inline-block;width:100%;max-width:970px;height:90px" data-ad-client="ca-pub-9335905935507660" data-ad-slot="YOUR_AD_SLOT_4"></ins>
   </div>
 </div>
 
@@ -1040,18 +809,18 @@
 <div class="section-divider"></div>
 
 <!-- YOUTUBE -->
-<div class="section reveal" id="youtube" style="text-align:center;">
+<div class="section reveal" id="youtube" style="text-align:center">
   <div class="section-title">Watch Our Strategies</div>
   <div class="section-sub">Subscribe for weekly study tips, timetable walkthroughs and topper interviews.</div>
-  <a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="btn" style="padding:14px 28px; font-size:16px; display:inline-flex; align-items:center; gap:8px;">
+  <a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="btn" style="padding:13px 24px;font-size:15px;display:inline-flex;align-items:center;gap:8px">
     ▶ Subscribe on YouTube
   </a>
 </div>
 
 <!-- RATING -->
 <div class="rating-section">
-  <h3 style="font-size:20px; font-weight:700;">Rate Studytable</h3>
-  <p style="color:var(--text-muted); font-size:14px; margin-top:8px;">Your feedback helps us improve for every student.</p>
+  <h3 style="font-size:20px;font-weight:700">Rate Studytable</h3>
+  <p style="color:var(--text-muted);font-size:13px;margin-top:6px">Your feedback helps us improve for every student.</p>
   <div class="rating-stars" id="starContainer">
     <span class="star" onclick="setRating(1)">★</span>
     <span class="star" onclick="setRating(2)">★</span>
@@ -1060,6 +829,13 @@
     <span class="star" onclick="setRating(5)">★</span>
   </div>
   <div class="rating-msg" id="ratingMsg"></div>
+</div>
+
+<!-- BOTTOM AD -->
+<div class="ad-leaderboard-wrap">
+  <div class="ad-leaderboard-inner">
+    <ins class="adsbygoogle" style="display:inline-block;width:728px;max-width:100%;height:90px" data-ad-client="ca-pub-9335905935507660" data-ad-slot="YOUR_AD_SLOT_5"></ins>
+  </div>
 </div>
 
 <!-- FOOTER -->
@@ -1104,11 +880,81 @@
 </footer>
 
 <script>
-/* ═══════════════════════════════════════════
-   CORE DATA
-═══════════════════════════════════════════ */
-const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+/* ══════════════════════════════════════════════════════
+   SUBJECT UNITS DATABASE
+══════════════════════════════════════════════════════ */
+const SUBJECT_UNITS = {
+  Physics: [
+    'Kinematics','Newton\'s Laws','Work & Energy','Rotational Motion',
+    'Gravitation','Thermodynamics','Waves & SHM',
+    'Electrostatics','Current Electricity','Magnetism',
+    'EMI & AC Circuits','Optics','Modern Physics','Semiconductors'
+  ],
+  Chemistry: [
+    'Some Basic Concepts','Atomic Structure','Chemical Bonding',
+    'States of Matter','Thermodynamics','Equilibrium',
+    'Redox Reactions','Organic: Basics','Organic: Hydrocarbons',
+    'Organic: Functional Groups','Electrochemistry',
+    'Chemical Kinetics','Coordination Compounds','p-Block Elements'
+  ],
+  Maths: [
+    'Sets & Functions','Trigonometry','Algebra: Sequences',
+    'Coordinate Geometry','Limits & Derivatives',
+    'Integration','Applications of Calculus',
+    'Vectors & 3D','Probability','Matrices & Determinants',
+    'Complex Numbers','Permutations & Combinations','Binomial Theorem','Statistics'
+  ],
+  Biology: [
+    'Cell: Structure & Function','Biomolecules','Cell Division',
+    'Plant: Morphology','Plant: Anatomy','Photosynthesis',
+    'Plant Respiration','Plant Growth & Development',
+    'Animal: Digestion','Animal: Breathing','Animal: Body Fluids',
+    'Animal: Excretion','Locomotion & Movement','Neural Control',
+    'Chemical Coordination','Reproduction in Plants',
+    'Human Reproduction','Genetics: Mendel','Molecular Basis of Inheritance',
+    'Evolution','Human Health & Disease','Biodiversity & Conservation'
+  ],
+  Maths_School: [
+    'Real Numbers','Polynomials','Linear Equations','Quadratic Equations',
+    'Arithmetic Progressions','Triangles','Coordinate Geometry',
+    'Trigonometry','Surface Areas & Volumes','Statistics & Probability'
+  ],
+  Science_School: [
+    'Chemical Reactions','Acids, Bases & Salts','Metals & Non-Metals',
+    'Carbon Compounds','Life Processes','Control & Coordination',
+    'Reproduction','Heredity & Evolution',
+    'Light: Reflection','Light: Refraction','Electricity','Magnetic Effects'
+  ],
+  English: ['Reading Comprehension','Grammar: Tenses','Grammar: Voice & Narration','Letter Writing','Essay Writing','Literature: Prose','Literature: Poetry'],
+  Social_School: ['History: Nationalism','History: Industrial Rev','Geography: Resources','Geography: India','Civics: Democracy','Economics: Development'],
+  Hindi: ['Gadya (Prose)','Kavya (Poetry)','Grammar','Letter & Essay Writing'],
+  Sanskrit: ['Grammar Basics','Translation','Shlokas & Meaning','Prose Passages']
+};
 
+const SCHOOL_SUBJECTS = {
+  6: ['Maths_School','Science_School','English','Social_School','Hindi'],
+  7: ['Maths_School','Science_School','English','Social_School','Hindi'],
+  8: ['Maths_School','Science_School','English','Social_School','Hindi','Sanskrit'],
+  9: ['Maths_School','Science_School','English','Social_School','Hindi'],
+  10: ['Maths_School','Science_School','English','Social_School','Hindi']
+};
+
+const SUBJECT_DISPLAY = {
+  Maths_School:'Maths', Science_School:'Science', Social_School:'Social Science'
+};
+
+const SUBJECT_COLORS = {
+  Physics:'#3b82f6', Chemistry:'#10b981', Maths:'#f59e0b', Biology:'#8b5cf6',
+  Maths_School:'#f59e0b', Science_School:'#10b981', English:'#3b82f6',
+  Social_School:'#ef4444', Hindi:'#f59e0b', Sanskrit:'#8b5cf6'
+};
+
+const DAYS = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+const SHORT_DAYS = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+
+/* ══════════════════════════════════════════════════════
+   STATIC DATA
+══════════════════════════════════════════════════════ */
 const QUOTES = [
   { text: "Success is the sum of small efforts, repeated day in and day out.", author: "Robert Collier" },
   { text: "Don't watch the clock; do what it does. Keep going.", author: "Sam Levenson" },
@@ -1145,50 +991,348 @@ const TESTIMONIALS = [
 
 const FAQS = [
   { q: "Is Studytable completely free?", a: "Yes, 100% free. All features including the timetable generator, Pomodoro timer, streak tracker and exam countdown are free with no hidden charges." },
-  { q: "Can I save multiple timetables?", a: "Yes! After signing in with your name and age, you can generate and save up to 10 timetables. Each one is stored locally on your device." },
+  { q: "Can I save multiple timetables?", a: "Yes! After signing in with your name and age, you can generate and save up to 10 timetables. Each one is stored locally on your device. You can delete individual ones or clear all at once." },
   { q: "Which exams does Studytable support?", a: "We have dedicated templates for JEE (Mains & Advanced), NEET, and Class 6-10 school boards. The 'Custom' tab lets you create a plan for any exam including UPSC, CAT, or state boards." },
+  { q: "How is the timetable different from generic planners?", a: "Instead of just saying '3 hours Physics', Studytable schedules specific units/chapters, includes recall sessions (active retrieval practice), quick MCQ tests, and proper breaks — a scientifically proven study structure." },
   { q: "How does the Pomodoro timer work?", a: "The timer runs in 25-minute focus sessions. After each session, take a 5-minute short break. After 4 sessions, take a 15-minute long break. You can switch modes anytime." },
-  { q: "Can I print my timetable?", a: "Yes! After generating a timetable, click the 'Print / PDF' button to open your browser's print dialog. You can save it as a PDF or print it directly." },
+  { q: "Can I print my timetable?", a: "Yes! After generating a timetable, click the 'Print / Save PDF' button. Only the timetable is printed — no navbar, footer, or other website content." },
   { q: "Does Studytable work on mobile?", a: "Yes, Studytable is fully responsive and works on all devices including phones, tablets, and desktops." },
 ];
 
 const EXAMS = [
-  { name: "JEE Mains 2025", date: "2025-04-02" },
-  { name: "JEE Advanced 2025", date: "2025-05-18" },
-  { name: "NEET UG 2025", date: "2025-05-04" },
-  { name: "Class 10 Boards", date: "2025-02-15" },
+  { name: "JEE Mains 2026", date: "2026-01-22" },
+  { name: "JEE Advanced 2026", date: "2026-05-24" },
+  { name: "NEET UG 2026", date: "2026-05-03" },
+  { name: "Class 10 Boards", date: "2026-02-15" },
 ];
 
-/* ═══════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
+   HELPERS
+══════════════════════════════════════════════════════ */
+function addMinutes(timeStr, mins) {
+  const [h, m] = timeStr.split(':').map(Number);
+  const total = h * 60 + m + mins;
+  const nh = Math.floor(total / 60) % 24;
+  const nm = total % 60;
+  return `${nh.toString().padStart(2,'0')}:${nm.toString().padStart(2,'0')}`;
+}
+function fmtTime(timeStr) {
+  const [h, m] = timeStr.split(':').map(Number);
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const dh = h % 12 || 12;
+  return `${dh}:${m.toString().padStart(2,'0')} ${ampm}`;
+}
+function subjectDisplayName(s) { return SUBJECT_DISPLAY[s] || s; }
+function subjectColor(s) { return SUBJECT_COLORS[s] || '#3b82f6'; }
+
+/* ══════════════════════════════════════════════════════
+   SMART TIMETABLE ENGINE
+══════════════════════════════════════════════════════ */
+function buildDaySchedule(subjects, dailyHours, wakeTime, dayIndex) {
+  /*
+    Structure per study block (90 min study + 10 min break + 20 min recall + 15 min quiz):
+      - [90 min] Deep Study: Subject + Unit
+      - [10 min] Short Break
+      - [20 min] Active Recall (on today's unit)
+      - [15 min] Quick MCQ Test (5–10 questions)
+    After every 2 blocks: 30 min long break (lunch/rest)
+    Morning: warm-up 10 min
+    Evening: 30 min overall revision
+    Night: 20 min next-day preview
+  */
+  const BLOCK_STUDY = 90;
+  const BREAK_SHORT = 10;
+  const RECALL = 20;
+  const QUIZ = 15;
+  const BREAK_LONG = 30;
+  const WARMUP = 10;
+  const REVISION_END = 30;
+  const PREVIEW = 20;
+
+  // How many study blocks fit in dailyHours?
+  // Each full cycle = 90+10+20+15 = 135 min
+  // After 2 cycles = +30 min long break
+  // We also need warmup(10) + end_revision(30) + preview(20) = 60 min fixed overhead
+  const availMinutes = dailyHours * 60;
+  const blockTime = BLOCK_STUDY + BREAK_SHORT + RECALL + QUIZ; // 135
+  // Estimate blocks
+  let numBlocks = Math.max(1, Math.floor((availMinutes - 60) / blockTime));
+  // Add long breaks count
+  const longBreaks = Math.floor(numBlocks / 2);
+  const realTotal = 60 + numBlocks * blockTime + longBreaks * BREAK_LONG;
+  // Reduce if overshoot
+  while(numBlocks > 1 && (60 + numBlocks * blockTime + Math.floor(numBlocks/2)*BREAK_LONG) > availMinutes) numBlocks--;
+  numBlocks = Math.max(1, Math.min(numBlocks, subjects.length * 2));
+
+  const slots = [];
+  let current = wakeTime;
+
+  // Morning warm-up
+  const warmEnd = addMinutes(current, WARMUP);
+  slots.push({ type:'warmup', icon:'☀️', typelabel:'Morning Warm-up', name:'Review Yesterday\'s Notes', detail:'Quick glance at previous day\'s key points', start: current, end: warmEnd, cls:'slot-recall' });
+  current = warmEnd;
+
+  let blocksDone = 0;
+  // Track which unit to cover per subject
+  const unitTracker = {};
+  subjects.forEach(s => { unitTracker[s] = (dayIndex * 2) % ((SUBJECT_UNITS[s] || ['Unit 1']).length); });
+
+  for(let b = 0; b < numBlocks; b++) {
+    const subj = subjects[b % subjects.length];
+    const units = SUBJECT_UNITS[subj] || ['Unit 1','Unit 2','Unit 3'];
+    const unitIdx = (unitTracker[subj] + b) % units.length;
+    const unit = units[unitIdx];
+    const color = subjectColor(subj);
+
+    // Study block
+    const studyEnd = addMinutes(current, BLOCK_STUDY);
+    slots.push({
+      type:'study', icon:'📖', typelabel:'Deep Study',
+      name:`${subjectDisplayName(subj)}`, detail:`Unit: ${unit}`,
+      start:current, end:studyEnd, color, cls:'slot-study'
+    });
+    current = studyEnd;
+
+    // Short break
+    const sbEnd = addMinutes(current, BREAK_SHORT);
+    slots.push({ type:'break', icon:'☕', typelabel:'Short Break', name:'Rest & Hydrate', detail:'Step away, stretch, drink water', start:current, end:sbEnd, cls:'slot-break' });
+    current = sbEnd;
+
+    // Active recall
+    const recEnd = addMinutes(current, RECALL);
+    slots.push({
+      type:'recall', icon:'🧠', typelabel:'Active Recall',
+      name:`${subjectDisplayName(subj)} Recall`,
+      detail:`Close book — write all you remember from "${unit}"`,
+      start:current, end:recEnd, color, cls:'slot-recall'
+    });
+    current = recEnd;
+
+    // Quick test
+    const testEnd = addMinutes(current, QUIZ);
+    slots.push({
+      type:'test', icon:'📝', typelabel:'Quick Test',
+      name:`${subjectDisplayName(subj)} MCQs`,
+      detail:`5–8 questions on "${unit}" — timed, no hints`,
+      start:current, end:testEnd, color, cls:'slot-test'
+    });
+    current = testEnd;
+
+    blocksDone++;
+
+    // Long break every 2 blocks
+    if(blocksDone % 2 === 0 && b < numBlocks - 1) {
+      const lbEnd = addMinutes(current, BREAK_LONG);
+      slots.push({ type:'break', icon:'🍽️', typelabel:'Long Break', name:'Meal & Rest', detail:'Eat well, avoid screens, relax your mind', start:current, end:lbEnd, cls:'slot-break' });
+      current = lbEnd;
+    }
+  }
+
+  // Evening revision
+  const revEnd = addMinutes(current, REVISION_END);
+  slots.push({ type:'recall', icon:'🔁', typelabel:'Evening Revision', name:'Today\'s Summary Revision', detail:'Go through all recall notes from today\'s sessions', start:current, end:revEnd, cls:'slot-recall' });
+  current = revEnd;
+
+  // Next-day preview
+  const prevEnd = addMinutes(current, PREVIEW);
+  slots.push({ type:'recall', icon:'📋', typelabel:'Preview', name:'Tomorrow\'s Plan', detail:'Read unit headings for tomorrow — prime your brain', start:current, end:prevEnd, cls:'slot-recall' });
+
+  return slots;
+}
+
+function renderScheduleHTML(slots) {
+  return slots.map(s => `
+    <div class="tt-slot ${s.cls}" style="${s.color ? 'border-left-color:'+s.color : ''}">
+      <div class="tt-slot-time">
+        ${fmtTime(s.start)}
+        <div class="duration">→ ${fmtTime(s.end)}</div>
+      </div>
+      <div class="tt-slot-body">
+        <div class="tt-slot-type" style="${s.color ? 'color:'+s.color : 'color:var(--text-muted)'}">${s.typelabel}</div>
+        <div class="tt-slot-name">${s.name}</div>
+        <div class="tt-slot-detail">${s.detail}</div>
+      </div>
+      <div class="tt-slot-icon">${s.icon}</div>
+    </div>
+  `).join('');
+}
+
+/* ══════════════════════════════════════════════════════
+   MAIN GENERATE FUNCTION
+══════════════════════════════════════════════════════ */
+function aiGenerate(type) {
+  const user = getUser();
+  if(!user) { openAuth(); return; }
+
+  let hours, wakeTime, subjects = [], label = type;
+
+  if(type === 'JEE') {
+    hours = parseInt(document.getElementById('jeeHours').value);
+    wakeTime = document.getElementById('jeeWake').value;
+    document.querySelectorAll('input[name="jeeSub"]:checked').forEach(i => subjects.push(i.value));
+    if(subjects.length === 0) { showToast('⚠️','Select at least one subject'); return; }
+  } else if(type === 'NEET') {
+    hours = parseInt(document.getElementById('neetHours').value);
+    wakeTime = document.getElementById('neetWake').value;
+    document.querySelectorAll('input[name="neetSub"]:checked').forEach(i => subjects.push(i.value));
+    if(subjects.length === 0) { showToast('⚠️','Select at least one subject'); return; }
+  } else if(type === 'SCHOOL') {
+    hours = parseInt(document.getElementById('schoolHours').value);
+    wakeTime = document.getElementById('schoolWake').value;
+    const cls = parseInt(document.getElementById('schoolClass').value);
+    subjects = SCHOOL_SUBJECTS[cls] || SCHOOL_SUBJECTS[10];
+    label = `Class ${cls}th`;
+  } else {
+    hours = parseInt(document.getElementById('customHours').value);
+    wakeTime = document.getElementById('customWake').value;
+    const goal = document.getElementById('customGoal').value || 'Custom';
+    const rawSubs = document.getElementById('customSubjects').value;
+    subjects = rawSubs ? rawSubs.split(',').map(s => s.trim()).filter(Boolean) : ['Study Block'];
+    label = goal;
+    // Map custom subjects to known ones or use generic units
+    subjects.forEach(s => {
+      if(!SUBJECT_UNITS[s]) SUBJECT_UNITS[s] = ['Fundamentals','Core Concepts','Advanced Topics','Practice Problems','Revision'];
+    });
+  }
+
+  hours = Math.max(2, Math.min(hours, 18));
+
+  // Build 7 days
+  const tabsHTML = SHORT_DAYS.map((d, i) =>
+    `<button class="tt-day-tab ${i===0?'active':''}" onclick="showDay(${i})">${d}</button>`
+  ).join('');
+  document.getElementById('dayTabs').innerHTML = tabsHTML;
+
+  let schedulesHTML = '';
+  DAYS.forEach((day, i) => {
+    const slots = buildDaySchedule(subjects, hours, wakeTime, i);
+    schedulesHTML += `<div class="tt-day-schedule ${i===0?'active':''}" id="daySchedule-${i}">
+      <h4 style="font-size:14px;font-weight:700;color:var(--text-muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:1px">${day}</h4>
+      ${renderScheduleHTML(slots)}
+    </div>`;
+  });
+  document.getElementById('daySchedules').innerHTML = schedulesHTML;
+
+  document.getElementById('outputTitle').textContent = `${label} Plan — ${hours}h/day`;
+  const outputEl = document.getElementById('ttOutput');
+  outputEl.style.display = 'block';
+  outputEl.scrollIntoView({ behavior:'smooth' });
+
+  // Save snapshot
+  const savedHTML = document.getElementById('daySchedules').innerHTML;
+  saveToHistory(`${label} (${hours}h/day)`, tabsHTML, savedHTML);
+  showToast('📅','Timetable generated!');
+}
+
+function showDay(idx) {
+  document.querySelectorAll('.tt-day-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.tt-day-schedule').forEach((s,i) => s.classList.toggle('active', i===idx));
+}
+
+/* ══════════════════════════════════════════════════════
+   PRINT — ONLY TIMETABLE
+══════════════════════════════════════════════════════ */
+function printTimetable() {
+  // Show all days for print
+  document.querySelectorAll('.tt-day-schedule').forEach(s => s.style.display = 'block');
+  document.querySelectorAll('.tt-day-tab').forEach(t => t.style.display = 'none');
+  window.print();
+  // Restore after print
+  setTimeout(() => {
+    document.querySelectorAll('.tt-day-schedule').forEach((s,i) => s.style.display = i===0 ? 'block' : 'none');
+    document.querySelectorAll('.tt-day-tab').forEach(t => t.style.display = '');
+    // Re-activate correct tab
+    document.querySelectorAll('.tt-day-schedule').forEach((s,i) => s.classList.toggle('active', i===0));
+  }, 500);
+}
+
+/* ══════════════════════════════════════════════════════
+   SAVE / DELETE TIMETABLES
+══════════════════════════════════════════════════════ */
+function saveToHistory(title, tabsHTML, schedulesHTML) {
+  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
+  saved.unshift({ id: Date.now(), title, date: new Date().toLocaleDateString('en-IN'), tabsHTML, schedulesHTML });
+  localStorage.setItem('studytable_saved', JSON.stringify(saved.slice(0,10)));
+  renderSavedTimetables();
+}
+
+function renderSavedTimetables() {
+  const container = document.getElementById('savedGrid');
+  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
+  if(saved.length === 0) {
+    container.innerHTML = '<p style="font-size:13px;color:var(--text-muted)">No saved timetables yet. Generate one below!</p>';
+    return;
+  }
+  container.innerHTML = saved.map(item => `
+    <div class="saved-card">
+      <div class="saved-title">${item.title}</div>
+      <div class="saved-date">Saved on ${item.date}</div>
+      <div class="saved-card-actions">
+        <button class="btn btn-outline" style="font-size:11px;padding:7px 12px" onclick="loadSaved(${item.id})">👁 View</button>
+        <button class="btn btn-danger" style="font-size:11px;padding:7px 12px" onclick="deleteSaved(${item.id})">🗑 Delete</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+function loadSaved(id) {
+  const saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
+  const item = saved.find(i => i.id === id);
+  if(!item) return;
+  document.getElementById('dayTabs').innerHTML = item.tabsHTML;
+  document.getElementById('daySchedules').innerHTML = item.schedulesHTML;
+  document.getElementById('outputTitle').textContent = item.title;
+  document.getElementById('ttOutput').style.display = 'block';
+  document.getElementById('ttOutput').scrollIntoView({ behavior:'smooth' });
+  showToast('📅', `Loaded: ${item.title}`);
+}
+
+function deleteSaved(id) {
+  if(!confirm('Delete this timetable?')) return;
+  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
+  saved = saved.filter(i => i.id !== id);
+  localStorage.setItem('studytable_saved', JSON.stringify(saved));
+  renderSavedTimetables();
+  showToast('🗑', 'Timetable deleted.');
+}
+
+function clearAllSaved() {
+  if(!confirm('Delete ALL saved timetables? This cannot be undone.')) return;
+  localStorage.removeItem('studytable_saved');
+  renderSavedTimetables();
+  showToast('🗑', 'All timetables cleared.');
+}
+
+/* ══════════════════════════════════════════════════════
    NAV / AUTH
-═══════════════════════════════════════════ */
-function scrollToGen() { document.getElementById('generator').scrollIntoView({ behavior: 'smooth' }); }
+══════════════════════════════════════════════════════ */
+function scrollToGen() { document.getElementById('generator').scrollIntoView({ behavior:'smooth' }); }
 function switchTab(tabId, element) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   element.classList.add('active');
-  document.getElementById('panel-' + tabId).classList.add('active');
+  document.getElementById('panel-'+tabId).classList.add('active');
   document.getElementById('ttOutput').style.display = 'none';
 }
 function openAuth() { document.getElementById('authModal').classList.add('open'); }
 function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
 function signIn() {
-  const name = document.getElementById('authName').value;
+  const name = document.getElementById('authName').value.trim();
   const age = document.getElementById('authAge').value;
-  if(!name || !age) return alert("Fill all fields");
+  if(!name || !age) { showToast('⚠️','Fill in your name and age'); return; }
   localStorage.setItem('studytable_user', JSON.stringify({ name, age, avatar: name[0].toUpperCase() }));
   closeAuth(); updateUI(); showToast('🎉', `Welcome, ${name}!`);
 }
 function signOut() { localStorage.removeItem('studytable_user'); updateUI(); }
-function getUser() { return JSON.parse(localStorage.getItem('studytable_user')); }
+function getUser() { return JSON.parse(localStorage.getItem('studytable_user') || 'null'); }
 function updateUI() {
   const user = getUser();
   const dash = document.getElementById('userDashboard');
   if(user) {
-    document.getElementById('navAction').innerHTML = `<button class='btn btn-outline'>${user.name}</button>`;
+    document.getElementById('navAction').innerHTML = `<button class='btn btn-outline' style='font-size:12px'>${user.avatar} ${user.name}</button>`;
     dash.classList.add('active');
     document.getElementById('userAvatar').textContent = user.avatar;
-    document.getElementById('userInfoDisplay').textContent = `${user.age} Years Old`;
+    document.getElementById('userInfoDisplay').textContent = `${user.name}, Age ${user.age}`;
     renderSavedTimetables();
   } else {
     document.getElementById('navAction').innerHTML = `<button class='btn' onclick='openAuth()'>Sign In</button>`;
@@ -1196,165 +1340,34 @@ function updateUI() {
   }
 }
 
-/* ═══════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
    TOAST
-═══════════════════════════════════════════ */
+══════════════════════════════════════════════════════ */
 function showToast(icon, msg) {
   document.getElementById('toastIcon').textContent = icon;
   document.getElementById('toastMsg').textContent = msg;
   const t = document.getElementById('toast');
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3500);
+  setTimeout(() => t.classList.remove('show'), 3200);
 }
 
-/* ═══════════════════════════════════════════
-   AI TIMETABLE LOGIC (original, unchanged)
-═══════════════════════════════════════════ */
-function aiGenerate(type) {
-  const user = getUser();
-  if(!user) { openAuth(); return; }
-  let hours, wakeTime, subjects = [];
-  if(type === 'JEE') {
-    hours = parseInt(document.getElementById('jeeHours').value);
-    wakeTime = document.getElementById('jeeWake').value;
-    document.querySelectorAll('input[name="jeeSub"]:checked').forEach(i => subjects.push(i.value));
-  } else if(type === 'NEET') {
-    hours = parseInt(document.getElementById('neetHours').value);
-    wakeTime = document.getElementById('neetWake').value;
-    document.querySelectorAll('input[name="neetSub"]:checked').forEach(i => subjects.push(i.value));
-  } else if(type === 'SCHOOL') {
-    hours = parseInt(document.getElementById('schoolHours').value);
-    wakeTime = document.getElementById('schoolWake').value;
-    subjects = ['Maths', 'Science', 'English', 'Social', 'Revision'];
-  } else {
-    hours = parseInt(document.getElementById('customHours').value);
-    wakeTime = document.getElementById('customWake').value;
-    subjects = ['Study Block 1', 'Study Block 2', 'Review'];
-  }
-  if(subjects.length === 0) subjects = ['General Study'];
-  generateTimetableUI(type, subjects, hours, wakeTime);
-}
-
-function generateTimetableUI(type, subjects, dailyHours, startTimeStr) {
-  const grid = document.getElementById('outputGrid');
-  let html = '<div class="tt-cell tt-header-cell">Time Slot</div>';
-  DAYS.forEach(d => html += `<div class="tt-cell tt-header-cell">${d}</div>`);
-  const blocksPerDay = 3;
-  const hoursPerBlock = (dailyHours / blocksPerDay).toFixed(1);
-  let [h, m] = startTimeStr.split(':').map(Number);
-  for(let i=0; i < blocksPerDay; i++) {
-    let startStr = formatTime(h, m);
-    h += Math.floor(hoursPerBlock);
-    m += (hoursPerBlock % 1) * 60;
-    if(m >= 60) { h++; m -= 60; }
-    let endStr = formatTime(h, m);
-    html += `<div class="tt-cell tt-header-cell" style="font-size:10px">${startStr} - ${endStr}</div>`;
-    DAYS.forEach((day, dIndex) => {
-      const sub = subjects[(i + dIndex) % subjects.length];
-      const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
-      const color = colors[subjects.indexOf(sub) % colors.length] || '#3b82f6';
-      html += `<div class="tt-cell" style="border-left: 3px solid ${color}">
-                <div class="subject-name" style="color:${color}">${sub}</div>
-                <div class="subject-time">${hoursPerBlock}h Session</div>
-              </div>`;
-    });
-    h += 1;
-  }
-  grid.innerHTML = html;
-  document.getElementById('outputTitle').textContent = `${type} Plan (${dailyHours}h/day)`;
-  document.getElementById('ttOutput').style.display = 'block';
-  document.getElementById('ttOutput').scrollIntoView({ behavior: 'smooth' });
-  saveToHistory(`${type} (${dailyHours}h)`, html);
-  showToast('📅', 'Timetable generated successfully!');
-}
-
-function formatTime(h, m) {
-  h = h % 24;
-  const ampm = h >= 12 ? 'PM' : 'AM';
-  const displayH = h % 12 || 12;
-  const displayM = m.toString().padStart(2, '0');
-  return `${displayH}:${displayM} ${ampm}`;
-}
-
-function saveToHistory(title, html) {
-  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
-  saved.unshift({ id: Date.now(), title, date: new Date().toLocaleDateString(), html });
-  localStorage.setItem('studytable_saved', JSON.stringify(saved.slice(0, 10)));
-  renderSavedTimetables();
-}
-
-function renderSavedTimetables() {
-  const container = document.getElementById('savedGrid');
-  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
-  container.innerHTML = saved.map(item => `
-    <div class="saved-card">
-      <div class="saved-title">${item.title}</div>
-      <div class="saved-date">${item.date}</div>
-      <button class="btn btn-outline" style="font-size:11px" onclick="loadSaved(${item.id})">View</button>
-    </div>
-  `).join('');
-}
-
-function loadSaved(id) {
-  const item = JSON.parse(localStorage.getItem('studytable_saved')).find(i => i.id === id);
-  document.getElementById('outputGrid').innerHTML = item.html;
-  document.getElementById('ttOutput').style.display = 'block';
-}
-
-/* ═══════════════════════════════════════════
-   ARTICLES (original + new)
-═══════════════════════════════════════════ */
-function renderArticles() {
-  document.getElementById('articlesGrid').innerHTML = ARTICLES.map((a, i) => `
-    <div class="news-card" onclick="openArticle(${i})">
-      <div class="news-tag">${a.tag}</div>
-      <div class="news-title">${a.title}</div>
-      <div class="news-desc">${a.desc}</div>
-      <div style="color:var(--accent); font-size:12px; margin-top:14px">Read More →</div>
-    </div>
-  `).join('');
-}
-function openArticle(i) {
-  const a = ARTICLES[i];
-  document.getElementById('modalArticleTitle').textContent = a.title;
-  document.getElementById('modalArticleContent').innerHTML = `<p style="margin-top:16px;font-size:15px;line-height:1.8;color:var(--text-muted)">${a.content}</p>`;
-  document.getElementById('articleModal').classList.add('open');
-}
-function closeArticle() { document.getElementById('articleModal').classList.remove('open'); }
-
-/* ═══════════════════════════════════════════
-   RATING (original)
-═══════════════════════════════════════════ */
-function setRating(n) {
-  document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < n));
-  const msg = document.getElementById('ratingMsg');
-  msg.textContent = `Rated ${n} Stars! Thanks for your feedback.`;
-  msg.style.display = 'block';
-}
-
-/* ═══════════════════════════════════════════
-   POMODORO TIMER (NEW)
-═══════════════════════════════════════════ */
-const TIMER_MODES = { focus: 25*60, short: 5*60, long: 15*60 };
-let timerMode = 'focus';
-let timerSecs = TIMER_MODES.focus;
-let timerTotal = TIMER_MODES.focus;
-let timerRunning = false;
-let timerInterval = null;
-let sessionCount = 0;
+/* ══════════════════════════════════════════════════════
+   POMODORO TIMER
+══════════════════════════════════════════════════════ */
+const TIMER_MODES = { focus:25*60, short:5*60, long:15*60 };
+let timerMode = 'focus', timerSecs = TIMER_MODES.focus, timerTotal = TIMER_MODES.focus;
+let timerRunning = false, timerInterval = null, sessionCount = 0;
+const CIRCUMFERENCE = 478; // 2*pi*76
 
 function setTimerMode(mode, btn) {
   document.querySelectorAll('.timer-mode-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  timerMode = mode;
-  timerSecs = TIMER_MODES[mode];
-  timerTotal = TIMER_MODES[mode];
+  timerMode = mode; timerSecs = TIMER_MODES[mode]; timerTotal = TIMER_MODES[mode];
   clearInterval(timerInterval); timerRunning = false;
   document.getElementById('timerStartBtn').textContent = '▶ Start';
-  document.getElementById('timerModeLabel').textContent = mode === 'focus' ? 'Focus Time' : mode === 'short' ? 'Short Break' : 'Long Break';
+  document.getElementById('timerModeLabel').textContent = mode==='focus'?'Focus Time':mode==='short'?'Short Break':'Long Break';
   updateTimerDisplay();
 }
-
 function toggleTimer() {
   timerRunning = !timerRunning;
   document.getElementById('timerStartBtn').textContent = timerRunning ? '⏸ Pause' : '▶ Resume';
@@ -1369,220 +1382,233 @@ function toggleTimer() {
           sessionCount++;
           document.getElementById('sessionCount').textContent = sessionCount;
           renderSessionDots();
-          showToast('🎉', 'Focus session complete! Take a break.');
+          showToast('🎉','Focus session complete! Take a break.');
         }
-        timerSecs = timerTotal;
-        updateTimerDisplay();
+        timerSecs = timerTotal; updateTimerDisplay();
       }
     }, 1000);
-  } else {
-    clearInterval(timerInterval);
-  }
+  } else { clearInterval(timerInterval); }
 }
-
 function resetTimer() {
-  clearInterval(timerInterval); timerRunning = false;
-  timerSecs = timerTotal;
+  clearInterval(timerInterval); timerRunning = false; timerSecs = timerTotal;
   document.getElementById('timerStartBtn').textContent = '▶ Start';
   updateTimerDisplay();
 }
-
 function updateTimerDisplay() {
-  const m = Math.floor(timerSecs / 60).toString().padStart(2, '0');
-  const s = (timerSecs % 60).toString().padStart(2, '0');
+  const m = Math.floor(timerSecs/60).toString().padStart(2,'0');
+  const s = (timerSecs%60).toString().padStart(2,'0');
   document.getElementById('timerDisplay').textContent = `${m}:${s}`;
-  const circumference = 534;
-  const offset = circumference * (1 - timerSecs / timerTotal);
-  document.getElementById('timerRing').style.strokeDashoffset = circumference - offset;
+  const offset = CIRCUMFERENCE * (timerSecs / timerTotal);
+  document.getElementById('timerRing').style.strokeDashoffset = CIRCUMFERENCE - offset;
 }
-
 function renderSessionDots() {
-  const container = document.getElementById('sessionDots');
-  container.innerHTML = Array.from({length: Math.max(4, sessionCount)}, (_, i) =>
-    `<span class="session-dot ${i < sessionCount ? 'done' : ''}"></span>`
+  const n = Math.max(4, sessionCount);
+  document.getElementById('sessionDots').innerHTML = Array.from({length:n},(_,i) =>
+    `<span class="session-dot ${i<sessionCount?'done':''}"></span>`
   ).join('');
 }
 
-/* ═══════════════════════════════════════════
-   STREAK TRACKER (NEW)
-═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   STREAK TRACKER
+══════════════════════════════════════════════════════ */
 function renderStreakGrid() {
   const studied = JSON.parse(localStorage.getItem('st_studied') || '[]');
-  const container = document.getElementById('streakGrid');
   const today = new Date();
   let html = '';
-  for(let i = 27; i >= 0; i--) {
-    const d = new Date(today); d.setDate(today.getDate() - i);
+  for(let i=27;i>=0;i--) {
+    const d = new Date(today); d.setDate(today.getDate()-i);
     const key = d.toISOString().split('T')[0];
-    const isToday = i === 0;
-    const isStudied = studied.includes(key);
-    html += `<div class="streak-day ${isStudied ? 'studied' : ''} ${isToday ? 'today' : ''}" title="${key}">${d.getDate()}</div>`;
+    const isToday = i===0;
+    html += `<div class="streak-day ${studied.includes(key)?'studied':''} ${isToday?'today':''}" title="${key}">${d.getDate()}</div>`;
   }
-  container.innerHTML = html;
-  // Calculate streak
+  document.getElementById('streakGrid').innerHTML = html;
   let streak = 0;
-  for(let i = 0; i <= 365; i++) {
-    const d = new Date(today); d.setDate(today.getDate() - i);
+  for(let i=0;i<=365;i++) {
+    const d = new Date(today); d.setDate(today.getDate()-i);
     const key = d.toISOString().split('T')[0];
     if(studied.includes(key)) streak++; else break;
   }
   document.getElementById('streakNum').textContent = streak;
 }
-
 function markTodayStudied() {
   const studied = JSON.parse(localStorage.getItem('st_studied') || '[]');
   const today = new Date().toISOString().split('T')[0];
   if(!studied.includes(today)) { studied.push(today); localStorage.setItem('st_studied', JSON.stringify(studied)); }
   renderStreakGrid();
-  showToast('🔥', 'Today marked as studied!');
+  showToast('🔥','Today marked as studied!');
 }
 
-/* ═══════════════════════════════════════════
-   SUBJECT PROGRESS (NEW)
-═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   SUBJECT PROGRESS
+══════════════════════════════════════════════════════ */
 function loadProgress() {
-  const subjects = ['Physics', 'Chemistry', 'Maths', 'Biology'];
-  subjects.forEach(s => {
-    const val = parseInt(localStorage.getItem('st_prog_' + s) || '0');
-    document.getElementById('bar' + s).style.width = val + '%';
-    document.getElementById('pct' + s).textContent = val + '%';
+  ['Physics','Chemistry','Maths','Biology'].forEach(s => {
+    const val = parseInt(localStorage.getItem('st_prog_'+s)||'0');
+    document.getElementById('bar'+s).style.width = val+'%';
+    document.getElementById('pct'+s).textContent = val+'%';
   });
 }
-
 function addProgress(subject, amount) {
-  let val = parseInt(localStorage.getItem('st_prog_' + subject) || '0');
-  val = Math.min(100, val + amount);
-  localStorage.setItem('st_prog_' + subject, val);
-  document.getElementById('bar' + subject).style.width = val + '%';
-  document.getElementById('pct' + subject).textContent = val + '%';
+  let val = parseInt(localStorage.getItem('st_prog_'+subject)||'0');
+  val = Math.min(100, val+amount);
+  localStorage.setItem('st_prog_'+subject, val);
+  document.getElementById('bar'+subject).style.width = val+'%';
+  document.getElementById('pct'+subject).textContent = val+'%';
   showToast('📈', `${subject}: ${val}% complete`);
-  if(val >= 100) showToast('🏆', `${subject} syllabus complete!`);
+  if(val>=100) showToast('🏆',`${subject} syllabus complete!`);
 }
 
-/* ═══════════════════════════════════════════
-   EXAM COUNTDOWN (NEW)
-═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   EXAM COUNTDOWN
+══════════════════════════════════════════════════════ */
 function renderCountdown() {
-  const container = document.getElementById('countdownList');
   const today = new Date(); today.setHours(0,0,0,0);
-  container.innerHTML = EXAMS.map(exam => {
-    const examDate = new Date(exam.date); examDate.setHours(0,0,0,0);
-    const diff = Math.ceil((examDate - today) / (1000*60*60*24));
-    const cls = diff <= 0 ? '' : diff <= 30 ? 'countdown-urgent' : diff <= 90 ? 'countdown-warning' : '';
-    const daysText = diff <= 0 ? 'Completed' : `${diff}`;
+  document.getElementById('countdownList').innerHTML = EXAMS.map(exam => {
+    const ed = new Date(exam.date); ed.setHours(0,0,0,0);
+    const diff = Math.ceil((ed-today)/(1000*60*60*24));
+    const cls = diff<=0?'':(diff<=30?'countdown-urgent':(diff<=90?'countdown-warning':''));
     return `<div class="countdown-card">
       <div class="countdown-exam">${exam.name}</div>
-      <div class="countdown-days ${cls}">${daysText}</div>
-      <div class="countdown-dayslabel">${diff > 0 ? 'days remaining' : ''}</div>
-      <div class="countdown-date">${new Date(exam.date).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'})}</div>
+      <div class="countdown-days ${cls}">${diff<=0?'Done':diff}</div>
+      <div class="countdown-dayslabel">${diff>0?'days remaining':''}</div>
+      <div class="countdown-date">${new Date(exam.date).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})}</div>
     </div>`;
   }).join('');
 }
 
-/* ═══════════════════════════════════════════
-   QUOTES (NEW)
-═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   QUOTES
+══════════════════════════════════════════════════════ */
 let currentQuote = 0;
 function renderQuotes() {
-  const nav = document.getElementById('quoteNav');
-  nav.innerHTML = QUOTES.map((_, i) => `<div class="quote-dot ${i===0?'active':''}" onclick="setQuote(${i})"></div>`).join('');
+  document.getElementById('quoteNav').innerHTML = QUOTES.map((_,i) =>
+    `<div class="quote-dot ${i===0?'active':''}" onclick="setQuote(${i})"></div>`
+  ).join('');
   setQuote(0);
 }
 function setQuote(i) {
   currentQuote = i;
-  const qt = document.getElementById('quoteText');
-  const qa = document.getElementById('quoteAuthor');
-  qt.style.opacity = '0'; qt.style.transform = 'translateY(10px)';
+  const qt = document.getElementById('quoteText'), qa = document.getElementById('quoteAuthor');
+  qt.style.opacity='0'; qt.style.transform='translateY(10px)';
   setTimeout(() => {
     qt.textContent = `"${QUOTES[i].text}"`;
     qa.textContent = `— ${QUOTES[i].author}`;
-    qt.style.opacity = '1'; qt.style.transform = 'translateY(0)';
+    qt.style.opacity='1'; qt.style.transform='translateY(0)';
   }, 300);
-  document.querySelectorAll('.quote-dot').forEach((d, j) => d.classList.toggle('active', j===i));
+  document.querySelectorAll('.quote-dot').forEach((d,j) => d.classList.toggle('active',j===i));
 }
-setInterval(() => setQuote((currentQuote+1) % QUOTES.length), 5000);
+setInterval(() => setQuote((currentQuote+1)%QUOTES.length), 5000);
 
-/* ═══════════════════════════════════════════
-   TESTIMONIALS (NEW)
-═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   ARTICLES & TESTIMONIALS & FAQ
+══════════════════════════════════════════════════════ */
+function renderArticles() {
+  document.getElementById('articlesGrid').innerHTML = ARTICLES.map((a,i) =>
+    `<div class="news-card" onclick="openArticle(${i})">
+      <div class="news-tag">${a.tag}</div>
+      <div class="news-title">${a.title}</div>
+      <div class="news-desc">${a.desc}</div>
+      <div style="color:var(--accent);font-size:12px;margin-top:12px">Read More →</div>
+    </div>`
+  ).join('');
+}
+function openArticle(i) {
+  const a = ARTICLES[i];
+  document.getElementById('modalArticleTitle').textContent = a.title;
+  document.getElementById('modalArticleContent').innerHTML = `<p style="font-size:14px;line-height:1.8;color:var(--text-muted)">${a.content}</p>`;
+  document.getElementById('articleModal').classList.add('open');
+}
+function closeArticle() { document.getElementById('articleModal').classList.remove('open'); }
+
 function renderTestimonials() {
-  document.getElementById('testimonialsGrid').innerHTML = TESTIMONIALS.map(t => `
-    <div class="testi-card">
+  document.getElementById('testimonialsGrid').innerHTML = TESTIMONIALS.map(t =>
+    `<div class="testi-card">
       <div class="testi-stars">${'★'.repeat(t.stars)}</div>
       <div class="testi-quote">"${t.text}"</div>
       <div class="testi-author">
         <div class="testi-avatar" style="background:${t.color}">${t.name[0]}</div>
         <div><div class="testi-name">${t.name}</div><div class="testi-role">${t.role}</div></div>
       </div>
-    </div>
-  `).join('');
+    </div>`
+  ).join('');
 }
 
-/* ═══════════════════════════════════════════
-   FAQ (NEW)
-═══════════════════════════════════════════ */
 function renderFAQ() {
-  document.getElementById('faqList').innerHTML = FAQS.map((f, i) => `
-    <div class="faq-item" id="faq-${i}">
+  document.getElementById('faqList').innerHTML = FAQS.map((f,i) =>
+    `<div class="faq-item" id="faq-${i}">
       <div class="faq-question" onclick="toggleFAQ(${i})">
         <span>${f.q}</span><span class="faq-arrow">+</span>
       </div>
       <div class="faq-answer">${f.a}</div>
-    </div>
-  `).join('');
+    </div>`
+  ).join('');
 }
 function toggleFAQ(i) {
-  document.querySelectorAll('.faq-item').forEach((el, j) => { if(j !== i) el.classList.remove('open'); });
-  document.getElementById('faq-' + i).classList.toggle('open');
+  document.querySelectorAll('.faq-item').forEach((el,j) => { if(j!==i) el.classList.remove('open'); });
+  document.getElementById('faq-'+i).classList.toggle('open');
 }
 
-/* ═══════════════════════════════════════════
-   STATS COUNTER (NEW)
-═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   RATING
+══════════════════════════════════════════════════════ */
+function setRating(n) {
+  document.querySelectorAll('.star').forEach((s,i) => s.classList.toggle('active',i<n));
+  const msg = document.getElementById('ratingMsg');
+  msg.textContent = `Rated ${n} Star${n>1?'s':''}! Thanks for your feedback.`;
+  msg.style.display = 'block';
+}
+
+/* ══════════════════════════════════════════════════════
+   STATS COUNTER
+══════════════════════════════════════════════════════ */
 function animateCounters() {
   document.querySelectorAll('[data-target]').forEach(el => {
     const target = parseInt(el.dataset.target);
-    const suffix = el.dataset.target === '98' ? '%' : '+';
+    const suffix = el.dataset.target==='98'?'%':'+';
     let current = 0;
-    const step = target / 60;
+    const step = target/60;
     const interval = setInterval(() => {
       current += step;
-      if(current >= target) { current = target; clearInterval(interval); }
-      el.textContent = Math.floor(current).toLocaleString('en-IN') + suffix;
+      if(current>=target){ current=target; clearInterval(interval); }
+      el.textContent = Math.floor(current).toLocaleString('en-IN')+suffix;
     }, 30);
   });
 }
 
-/* ═══════════════════════════════════════════
-   SCROLL REVEAL (NEW)
-═══════════════════════════════════════════ */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if(entry.isIntersecting) { entry.target.classList.add('visible'); }
-  });
-}, { threshold: 0.1 });
+/* ══════════════════════════════════════════════════════
+   SCROLL REVEAL
+══════════════════════════════════════════════════════ */
+const revealObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
 
-/* ═══════════════════════════════════════════
-   TIPS TICKER (NEW)
-═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   TIPS TICKER
+══════════════════════════════════════════════════════ */
 let tipIdx = 0;
 function rotateTip() {
-  document.getElementById('tipsTicker').textContent = TIPS[tipIdx % TIPS.length];
+  document.getElementById('tipsTicker').textContent = TIPS[tipIdx%TIPS.length];
   tipIdx++;
 }
 
-/* ═══════════════════════════════════════════
-   READING PROGRESS BAR (NEW)
-═══════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════
+   READING BAR
+══════════════════════════════════════════════════════ */
 window.addEventListener('scroll', () => {
   const scrollTop = document.documentElement.scrollTop;
-  const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  document.getElementById('readingBar').style.width = (scrollTop / docHeight * 100) + '%';
+  const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById('readingBar').style.width = (scrollTop/docH*100)+'%';
 });
 
-/* ═══════════════════════════════════════════
+/* ══════════════════════════════════════════════════════
+   CLOSE MODALS ON OVERLAY CLICK
+══════════════════════════════════════════════════════ */
+document.getElementById('authModal').addEventListener('click', e => { if(e.target===e.currentTarget) closeAuth(); });
+document.getElementById('articleModal').addEventListener('click', e => { if(e.target===e.currentTarget) closeArticle(); });
+
+/* ══════════════════════════════════════════════════════
    INIT
-═══════════════════════════════════════════ */
+══════════════════════════════════════════════════════ */
 window.onload = () => {
   updateUI();
   renderArticles();
@@ -1597,1396 +1623,10 @@ window.onload = () => {
   rotateTip();
   setInterval(rotateTip, 6000);
   animateCounters();
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  // Init AdSense
+  try { (adsbygoogle=window.adsbygoogle||[]).push({}); } catch(e){}
 };
 </script>
 </body>
-</html>
-  <style>
-  /* BASE STYLES */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #09090b;
-    --bg-card: #18181b;
-    --bg-hover: #27272a;
-    --border: #3f3f46;
-    --text-main: #f4f4f5;
-    --text-muted: #a1a1aa;
-    --accent: #3b82f6;
-    --accent-hover: #2563eb;
-    --green: #10b981;
-    --orange: #f59e0b;
-    --red: #ef4444;
-    --radius: 12px;
-  }
-  body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg);
-    color: var(--text-main);
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  a { text-decoration: none; color: inherit; }
-
-  /* NAVBAR */
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(9, 9, 11, 0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 5%;
-    display: flex; align-items: center; justify-content: space-between;
-    height: 70px;
-  }
-  .logo { font-size: 20px; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
-  .logo span { color: var(--accent); }
-  .nav-links { display: flex; gap: 30px; }
-  .nav-links a { color: var(--text-muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--text-main); }
-  .btn {
-    background: var(--accent); color: #fff; border: none;
-    padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
-    cursor: pointer; transition: background 0.2s;
-  }
-  .btn:hover { background: var(--accent-hover); }
-  .btn-outline {
-    background: transparent; border: 1px solid var(--border); color: var(--text-main);
-  }
-  .btn-outline:hover { background: var(--bg-hover); }
-
-  /* HERO SECTION */
-  .hero { padding: 80px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
-  .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.2; }
-  .hero h1 span { color: var(--accent); }
-  .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
-
-  /* SECTIONS */
-  .section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
-  .section-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-  .section-sub { color: var(--text-muted); margin-bottom: 40px; font-size: 15px; }
-
-  /* CHECKBOX GROUP */
-  .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
-  .checkbox-item { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--text-main); cursor: pointer; }
-
-  /* USER PROFILE & SAVED TIMETABLES */
-  .dashboard-area { display: none; margin-bottom: 40px; }
-  .dashboard-area.active { display: block; }
-  .profile-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 20px; display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 30px;
-  }
-  .profile-info { display: flex; align-items: center; gap: 15px; }
-  .avatar {
-    width: 45px; height: 45px; border-radius: 50%; background: var(--accent);
-    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;
-  }
-
-  .saved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
-  .saved-card {
-    background: var(--bg-card); border: 1px solid var(--border); padding: 20px;
-    border-radius: var(--radius); transition: border 0.2s;
-  }
-  .saved-card:hover { border-color: var(--accent); }
-  .saved-title { font-weight: 600; font-size: 16px; margin-bottom: 5px; }
-  .saved-date { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
-
-  /* TABS & FORM */
-  .tabs { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-  .tab {
-    padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
-    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted);
-    cursor: pointer; transition: all 0.2s;
-  }
-  .tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-  .form-box { background: var(--bg-card); border: 1px solid var(--border); padding: 25px; border-radius: var(--radius); }
-  .form-box h3 { font-size: 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-  .step-num { 
-    background: var(--accent); color: #fff; width: 24px; height: 24px; 
-    display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 12px; font-weight: 700;
-  }
-  .input-group { margin-bottom: 15px; }
-  .input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
-  .input-field {
-    width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text-main);
-    padding: 12px; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif;
-    outline: none; transition: border 0.2s;
-  }
-  .input-field:focus { border-color: var(--accent); }
-  .btn-full { width: 100%; padding: 14px; font-size: 15px; margin-top: 10px; }
-
-  /* TIMETABLE OUTPUT */
-  .output-area {
-    background: var(--bg-card); border: 1px solid var(--border); padding: 30px;
-    border-radius: var(--radius); margin-top: 40px; display: none;
-  }
-  .output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-  .output-title { font-size: 20px; font-weight: 700; }
-  .tt-grid { display: grid; grid-template-columns: 120px repeat(7, 1fr); gap: 5px; overflow-x: auto; }
-  .tt-cell {
-    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
-    padding: 10px; text-align: center; font-size: 11px; min-height: 70px;
-    display: flex; flex-direction: column; justify-content: center; align-items: center;
-  }
-  .tt-header-cell { background: transparent; border: none; font-weight: 600; color: var(--text-muted); }
-  .subject-name { font-weight: 700; margin-bottom: 4px; font-size: 12px; }
-  .subject-time { font-size: 10px; opacity: 0.8; }
-
-  /* ARTICLES GRID */
-  .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-  .news-card {
-    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-    padding: 20px; transition: transform 0.2s; display: block;
-  }
-  .news-card:hover { transform: translateY(-5px); border-color: var(--text-muted); }
-  .news-tag { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
-  .news-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
-  .news-desc { font-size: 13px; color: var(--text-muted); }
-
-  /* RATING SYSTEM */
-  .rating-section { text-align: center; margin-top: 20px; padding: 40px 20px; border-top: 1px solid var(--border); }
-  .rating-stars { display: inline-flex; gap: 8px; font-size: 36px; cursor: pointer; margin-top: 15px; }
-  .star { color: var(--border); transition: color 0.2s, transform 0.1s; }
-  .star.active { color: var(--orange); }
-  .star:hover { transform: scale(1.1); }
-  .rating-msg { font-size: 14px; color: var(--green); margin-top: 15px; display: none; font-weight: 500; }
-
-  /* AD PLACEMENTS */
-  .ad-space { background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 30px auto; text-align: center; }
-  .ad-leaderboard { width: 100%; max-width: 728px; height: 90px; }
-  .ad-banner { width: 100%; max-width: 970px; height: 90px; }
-  .ad-vertical { position: fixed; top: 100px; width: 160px; height: 600px; background: var(--bg-card); border: 1px dashed var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-transform: uppercase; text-align: center; z-index: 10; }
-  .ad-vertical.left { left: 15px; }
-  .ad-vertical.right { right: 15px; }
-
-  @media(max-width: 1550px) { .ad-vertical { display: none; } }
-  @media(max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 36px; } .tt-grid { grid-template-columns: 100px repeat(7, 140px); } }
-
-  /* AUTH MODAL */
-  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 1000; }
-  .modal-overlay.open { display: flex; }
-  .auth-box, .article-modal-box { background: var(--bg-card); border: 1px solid var(--border); width: 100%; max-width: 400px; padding: 40px 30px; border-radius: var(--radius); position: relative; text-align: center; }
-  .article-modal-box { max-width: 700px; max-height: 80vh; overflow-y: auto; text-align: left; }
-  .close-modal { position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
-  </style>
-</head>
-<body>
-
-<div class="ad-vertical left">Left Ad<br>(160x600)</div>
-<div class="ad-vertical right">Right Ad<br>(160x600)</div>
-
-<div class="modal-overlay" id="authModal">
-  <div class="auth-box">
-    <button class="close-modal" onclick="closeAuth()">✕</button>
-    <h2>Join Studytable</h2>
-    <p>Enter your name and age to generate and save your timetables.</p>
-    <div class="input-group" style="text-align: left;">
-      <label>Your Name</label>
-      <input type="text" id="authName" class="input-field" placeholder="E.g. Rahul">
-    </div>
-    <div class="input-group" style="text-align: left;">
-      <label>Your Age</label>
-      <input type="number" id="authAge" class="input-field" placeholder="E.g. 16" min="10" max="99">
-    </div>
-    <button class="btn btn-full" onclick="signIn()">Sign Up / Log In</button>
-  </div>
-</div>
-
-<div class="modal-overlay" id="articleModal">
-  <div class="article-modal-box">
-    <button class="close-modal" onclick="closeArticle()">✕</button>
-    <h2 id="modalArticleTitle">Article Title</h2>
-    <div class="article-content" id="modalArticleContent"></div>
-  </div>
-</div>
-
-<nav>
-  <div class="logo">Study<span>table</span></div>
-  <div class="nav-links">
-    <a href="#generator">Generator</a>
-    <a href="#resources">Study Guides</a>
-    <a href="#youtube">YouTube</a>
-  </div>
-  <div id="navAction">
-    <button class="btn" onclick="openAuth()">Sign In</button>
-  </div>
-</nav>
-
-<div class="hero">
-  <h1>Plan Your Study,<br><span>Achieve Your Goals</span></h1>
-  <p>Create a smart, balanced study schedule. Save it, follow it, and see the results.</p>
-  <button class="btn" style="padding: 14px 28px; font-size: 16px;" onclick="scrollToGen()">Start Planning Now</button>
-</div>
-
-<div class="section" id="generator">
-  <div class="dashboard-area" id="userDashboard">
-    <div class="profile-card">
-      <div class="profile-info"><div class="avatar" id="userAvatar">U</div>
-      <div><div style="font-weight: 600; id='welcomeText'">Welcome back!</div><div style="font-size: 13px; color: var(--text-muted);" id="userInfoDisplay"></div></div></div>
-      <button class="btn btn-outline" onclick="signOut()">Log Out</button>
-    </div>
-    <h3 style="margin-bottom: 15px;">Saved Timetables</h3>
-    <div class="saved-grid" id="savedGrid"></div>
-  </div>
-
-  <div class="section-title">Timetable Generator</div>
-  <div class="tabs">
-    <div class="tab active" onclick="switchTab('jee', this)">JEE Prep</div>
-    <div class="tab" onclick="switchTab('neet', this)">NEET Prep</div>
-    <div class="tab" onclick="switchTab('school', this)">Class 6-10</div>
-    <div class="tab" onclick="switchTab('custom', this)">Custom</div>
-  </div>
-
-  <div class="tab-panel active" id="panel-jee">
-    <div class="form-grid">
-      <div class="form-box">
-        <h3><span class="step-num">1</span> Subjects</h3>
-        <div class="checkbox-group">
-          <label class="checkbox-item"><input type="checkbox" name="jeeSub" value="Physics" checked> Physics</label>
-          <label class="checkbox-item"><input type="checkbox" name="jeeSub" value="Chemistry" checked> Chemistry</label>
-          <label class="checkbox-item"><input type="checkbox" name="jeeSub" value="Maths" checked> Maths</label>
-        </div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">2</span> Daily Hours & Wakeup</h3>
-        <input type="number" id="jeeHours" class="input-field" value="8" min="4" max="16">
-        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
-        <input type="time" id="jeeWake" class="input-field" value="06:00">
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">3</span> Action</h3>
-        <button class="btn btn-full" onclick="aiGenerate('JEE')">AI Generate Timetable</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="panel-neet">
-    <div class="form-grid">
-      <div class="form-box">
-        <h3><span class="step-num">1</span> Subjects</h3>
-        <div class="checkbox-group">
-          <label class="checkbox-item"><input type="checkbox" name="neetSub" value="Biology" checked> Biology</label>
-          <label class="checkbox-item"><input type="checkbox" name="neetSub" value="Physics" checked> Physics</label>
-          <label class="checkbox-item"><input type="checkbox" name="neetSub" value="Chemistry" checked> Chemistry</label>
-        </div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">2</span> Daily Hours</h3>
-        <input type="number" id="neetHours" class="input-field" value="9" min="4" max="16">
-        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
-        <input type="time" id="neetWake" class="input-field" value="06:00">
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">3</span> Action</h3>
-        <button class="btn btn-full" onclick="aiGenerate('NEET')">AI Generate Timetable</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="panel-school">
-    <div class="form-grid">
-      <div class="form-box">
-        <h3><span class="step-num">1</span> Choose Class</h3>
-        <select id="schoolClass" class="input-field">
-          <option value="6th">Class 6th</option>
-          <option value="7th">Class 7th</option>
-          <option value="8th">Class 8th</option>
-          <option value="9th">Class 9th</option>
-          <option value="10th">Class 10th</option>
-        </select>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">2</span> Daily Hours</h3>
-        <input type="number" id="schoolHours" class="input-field" value="5" min="2" max="12">
-        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
-        <input type="time" id="schoolWake" class="input-field" value="07:00">
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">3</span> Action</h3>
-        <button class="btn btn-full" onclick="aiGenerate('SCHOOL')">Apply Class Template</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="panel-custom">
-    <div class="form-grid">
-      <div class="form-box">
-        <h3><span class="step-num">1</span> Goal</h3>
-        <input type="text" id="customGoal" class="input-field" placeholder="e.g. UPSC / Board Prep">
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">2</span> Daily Hours</h3>
-        <input type="number" id="customHours" class="input-field" value="6" min="1" max="18">
-        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
-        <input type="time" id="customWake" class="input-field" value="08:00">
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">3</span> Action</h3>
-        <button class="btn btn-full" onclick="aiGenerate('Custom')">Generate</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="output-area" id="ttOutput">
-    <div class="output-header">
-      <div class="output-title" id="outputTitle">Your Timetable</div>
-      <button class="btn btn-outline" onclick="window.print()">Print / PDF</button>
-    </div>
-    <div class="tt-grid" id="outputGrid"></div>
-  </div>
-</div>
-
-<div class="section" id="resources">
-  <div class="section-title">Study Tips & Guides</div>
-  <div class="news-grid" id="articlesGrid"></div>
-</div>
-
-<div class="section" id="youtube">
-  <div class="yt-box">
-    <h2>Watch Our Strategies</h2>
-    <a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="yt-video-link"><div class="play-btn"></div></a>
-    <br><a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="btn">Subscribe</a>
-  </div>
-</div>
-
-<div class="rating-section">
-  <h3>Rate Studytable</h3>
-  <div class="rating-stars" id="starContainer">
-    <span class="star" onclick="setRating(1)">★</span>
-    <span class="star" onclick="setRating(2)">★</span>
-    <span class="star" onclick="setRating(3)">★</span>
-    <span class="star" onclick="setRating(4)">★</span>
-    <span class="star" onclick="setRating(5)">★</span>
-  </div>
-  <div class="rating-msg" id="ratingMsg"></div>
-</div>
-
-<footer>
-  <div style="font-size: 20px; font-weight: 800; color: #fff;">Study<span>table</span></div>
-  <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="#">Terms</a>
-  </div>
-</footer>
-
-<script>
-const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-
-function scrollToGen() { document.getElementById('generator').scrollIntoView({ behavior: 'smooth' }); }
-
-function switchTab(tabId, element) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  element.classList.add('active');
-  document.getElementById('panel-' + tabId).classList.add('active');
-  document.getElementById('ttOutput').style.display = 'none';
-}
-
-function openAuth() { document.getElementById('authModal').classList.add('open'); }
-function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
-
-function signIn() {
-  const name = document.getElementById('authName').value;
-  const age = document.getElementById('authAge').value;
-  if(!name || !age) return alert("Fill all fields");
-  localStorage.setItem('studytable_user', JSON.stringify({ name, age, avatar: name[0].toUpperCase() }));
-  closeAuth(); updateUI();
-}
-
-function signOut() { localStorage.removeItem('studytable_user'); updateUI(); }
-
-function getUser() { return JSON.parse(localStorage.getItem('studytable_user')); }
-
-function updateUI() {
-  const user = getUser();
-  const dash = document.getElementById('userDashboard');
-  if(user) {
-    document.getElementById('navAction').innerHTML = `<button class='btn btn-outline'>${user.name}</button>`;
-    dash.classList.add('active');
-    document.getElementById('userAvatar').textContent = user.avatar;
-    document.getElementById('userInfoDisplay').textContent = `${user.age} Years Old`;
-    renderSavedTimetables();
-  } else {
-    document.getElementById('navAction').innerHTML = `<button class='btn' onclick='openAuth()'>Sign In</button>`;
-    dash.classList.remove('active');
-  }
-}
-
-// AI TIMETABLE LOGIC
-function aiGenerate(type) {
-  const user = getUser();
-  if(!user) { openAuth(); return; }
-
-  let hours, wakeTime, subjects = [];
-  
-  if(type === 'JEE') {
-    hours = parseInt(document.getElementById('jeeHours').value);
-    wakeTime = document.getElementById('jeeWake').value;
-    document.querySelectorAll('input[name="jeeSub"]:checked').forEach(i => subjects.push(i.value));
-  } else if(type === 'NEET') {
-    hours = parseInt(document.getElementById('neetHours').value);
-    wakeTime = document.getElementById('neetWake').value;
-    document.querySelectorAll('input[name="neetSub"]:checked').forEach(i => subjects.push(i.value));
-  } else if(type === 'SCHOOL') {
-    hours = parseInt(document.getElementById('schoolHours').value);
-    wakeTime = document.getElementById('schoolWake').value;
-    subjects = ['Maths', 'Science', 'English', 'Social', 'Revision'];
-  } else {
-    hours = parseInt(document.getElementById('customHours').value);
-    wakeTime = document.getElementById('customWake').value;
-    subjects = ['Study Block 1', 'Study Block 2', 'Review'];
-  }
-
-  if(subjects.length === 0) subjects = ['General Study'];
-
-  generateTimetableUI(type, subjects, hours, wakeTime);
-}
-
-function generateTimetableUI(type, subjects, dailyHours, startTimeStr) {
-  const grid = document.getElementById('outputGrid');
-  let html = '<div class="tt-cell tt-header-cell">Time Slot</div>';
-  DAYS.forEach(d => html += `<div class="tt-cell tt-header-cell">${d}</div>`);
-
-  // Calculate Blocks
-  const blocksPerDay = 3; 
-  const hoursPerBlock = (dailyHours / blocksPerDay).toFixed(1);
-  
-  // Start Time Logic
-  let [h, m] = startTimeStr.split(':').map(Number);
-
-  for(let i=0; i < blocksPerDay; i++) {
-    let startStr = formatTime(h, m);
-    // Move time forward
-    h += Math.floor(hoursPerBlock);
-    m += (hoursPerBlock % 1) * 60;
-    if(m >= 60) { h++; m -= 60; }
-    let endStr = formatTime(h, m);
-
-    html += `<div class="tt-cell tt-header-cell" style="font-size:10px">${startStr} - ${endStr}</div>`;
-    
-    DAYS.forEach((day, dIndex) => {
-      const sub = subjects[(i + dIndex) % subjects.length];
-      const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
-      const color = colors[subjects.indexOf(sub) % colors.length] || '#3b82f6';
-      
-      html += `<div class="tt-cell" style="border-left: 3px solid ${color}">
-                <div class="subject-name" style="color:${color}">${sub}</div>
-                <div class="subject-time">${hoursPerBlock}h Session</div>
-              </div>`;
-    });
-    
-    // Add gap for next block
-    h += 1; // 1 hour break
-  }
-
-  grid.innerHTML = html;
-  document.getElementById('outputTitle').textContent = `${type} Plan (${dailyHours}h/day)`;
-  document.getElementById('ttOutput').style.display = 'block';
-  document.getElementById('ttOutput').scrollIntoView({ behavior: 'smooth' });
-  
-  saveToHistory(`${type} (${dailyHours}h)`, html);
-}
-
-function formatTime(h, m) {
-  h = h % 24;
-  const ampm = h >= 12 ? 'PM' : 'AM';
-  const displayH = h % 12 || 12;
-  const displayM = m.toString().padStart(2, '0');
-  return `${displayH}:${displayM} ${ampm}`;
-}
-
-function saveToHistory(title, html) {
-  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
-  saved.unshift({ id: Date.now(), title, date: new Date().toLocaleDateString(), html });
-  localStorage.setItem('studytable_saved', JSON.stringify(saved.slice(0, 10)));
-  renderSavedTimetables();
-}
-
-function renderSavedTimetables() {
-  const container = document.getElementById('savedGrid');
-  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
-  container.innerHTML = saved.map(item => `
-    <div class="saved-card">
-      <div class="saved-title">${item.title}</div>
-      <button class="btn btn-outline" style="font-size:11px" onclick="loadSaved(${item.id})">View</button>
-    </div>
-  `).join('');
-}
-
-function loadSaved(id) {
-  const item = JSON.parse(localStorage.getItem('studytable_saved')).find(i => i.id === id);
-  document.getElementById('outputGrid').innerHTML = item.html;
-  document.getElementById('ttOutput').style.display = 'block';
-}
-
-// ARTICLES
-const articlesData = [
-  { title: "How to Concentration", tag: "Focus", content: "Use Pomodoro... Hide your phone... Sleep 8 hours." },
-  { title: "NEET Success", tag: "NEET", content: "NCERT is king. Practice 100 MCQs daily." },
-  { title: "JEE Strategy", tag: "JEE", content: "Focus on Calculus and Mechanics. Solve 10 years PYQs." }
-];
-
-function renderArticles() {
-  document.getElementById('articlesGrid').innerHTML = articlesData.map((a, i) => `
-    <div class="news-card" onclick="openArticle(${i})">
-      <div class="news-tag">${a.tag}</div>
-      <div class="news-title">${a.title}</div>
-      <div style="color:var(--accent); font-size:12px; margin-top:10px">Read More →</div>
-    </div>
-  `).join('');
-}
-
-function openArticle(i) {
-  const a = articlesData[i];
-  document.getElementById('modalArticleTitle').textContent = a.title;
-  document.getElementById('modalArticleContent').textContent = a.content;
-  document.getElementById('articleModal').classList.add('open');
-}
-function closeArticle() { document.getElementById('articleModal').classList.remove('open'); }
-
-function setRating(n) {
-  document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < n));
-  document.getElementById('ratingMsg').textContent = `Rated ${n} Stars! Thanks.`;
-}
-
-window.onload = () => { updateUI(); renderArticles(); };
-</script>
-</body>
-</html>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-  /* BASE STYLES */
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --bg: #09090b;
-    --bg-card: #18181b;
-  --bg-hover: #27272a;
-  --border: #3f3f46;
-  --text-main: #f4f4f5;
-  --text-muted: #a1a1aa;
-  --accent: #3b82f6;
-  --accent-hover: #2563eb;
-  --green: #10b981;
-  --orange: #f59e0b;
-  --red: #ef4444;
-  --radius: 12px;
-}
-body {
-  font-family: 'Inter', sans-serif;
-  background-color: var(--bg);
-  color: var(--text-main);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-a { text-decoration: none; color: inherit; }
-
-/* NAVBAR */
-nav {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(9, 9, 11, 0.85);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 5%;
-  display: flex; align-items: center; justify-content: space-between;
-  height: 70px;
-}
-.logo { font-size: 20px; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
-.logo span { color: var(--accent); }
-.nav-links { display: flex; gap: 30px; }
-.nav-links a { color: var(--text-muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
-.nav-links a:hover { color: var(--text-main); }
-.btn {
-  background: var(--accent); color: #fff; border: none;
-  padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: background 0.2s;
-}
-.btn:hover { background: var(--accent-hover); }
-.btn-outline {
-  background: transparent; border: 1px solid var(--border); color: var(--text-main);
-}
-.btn-outline:hover { background: var(--bg-hover); }
-
-/* HERO SECTION */
-.hero {
-  padding: 80px 5%; max-width: 1200px; margin: 0 auto; text-align: center;
-}
-.hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.2; }
-.hero h1 span { color: var(--accent); }
-.hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
-
-/* SECTIONS */
-.section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
-.section-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
-.section-sub { color: var(--text-muted); margin-bottom: 40px; font-size: 15px; }
-
-/* USER PROFILE & SAVED TIMETABLES */
-.dashboard-area { display: none; margin-bottom: 40px; }
-.dashboard-area.active { display: block; }
-.profile-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 20px; display: flex; align-items: center; justify-content: space-between;
-  margin-bottom: 30px;
-}
-.profile-info { display: flex; align-items: center; gap: 15px; }
-.avatar {
-  width: 45px; height: 45px; border-radius: 50%; background: var(--accent);
-  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;
-}
-
-.saved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
-.saved-card {
-  background: var(--bg-card); border: 1px solid var(--border); padding: 20px;
-  border-radius: var(--radius); transition: border 0.2s;
-}
-.saved-card:hover { border-color: var(--accent); }
-.saved-title { font-weight: 600; font-size: 16px; margin-bottom: 5px; }
-.saved-date { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
-
-/* TABS & FORM */
-.tabs { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-.tab {
-  padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
-  background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted);
-  cursor: pointer; transition: all 0.2s;
-}
-.tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
-
-.form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-.form-box { background: var(--bg-card); border: 1px solid var(--border); padding: 25px; border-radius: var(--radius); }
-.form-box h3 { font-size: 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
-.step-num { 
-  background: var(--accent); color: #fff; width: 24px; height: 24px; 
-  display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 12px; font-weight: 700;
-}
-.input-group { margin-bottom: 15px; }
-.input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
-.input-field {
-  width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text-main);
-  padding: 12px; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif;
-  outline: none; transition: border 0.2s;
-}
-.input-field:focus { border-color: var(--accent); }
-.btn-full { width: 100%; padding: 14px; font-size: 15px; margin-top: 10px; }
-
-/* TIMETABLE OUTPUT */
-.output-area {
-  background: var(--bg-card); border: 1px solid var(--border); padding: 30px;
-  border-radius: var(--radius); margin-top: 40px; display: none;
-}
-.output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-.output-title { font-size: 20px; font-weight: 700; }
-.tt-grid { display: grid; grid-template-columns: 80px repeat(7, 1fr); gap: 5px; overflow-x: auto; }
-.tt-cell {
-  background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
-  padding: 10px; text-align: center; font-size: 12px; min-height: 60px;
-  display: flex; flex-direction: column; justify-content: center; align-items: center;
-}
-.tt-header-cell { background: transparent; border: none; font-weight: 600; color: var(--text-muted); }
-.subject-name { font-weight: 700; margin-bottom: 4px; font-size: 13px; }
-.subject-time { font-size: 11px; opacity: 0.8; }
-
-/* ARTICLES GRID */
-.news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-.news-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 20px; transition: transform 0.2s; display: block;
-}
-.news-card:hover { transform: translateY(-5px); border-color: var(--text-muted); }
-.news-tag { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
-.news-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
-.news-desc { font-size: 13px; color: var(--text-muted); }
-
-/* YOUTUBE SECTION */
-.yt-box {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 40px; text-align: center;
-}
-.yt-box h2 { font-size: 24px; margin-bottom: 10px; }
-.yt-box p { color: var(--text-muted); margin-bottom: 25px; }
-.yt-video-link {
-  display: block; width: 100%; max-width: 600px; margin: 0 auto; aspect-ratio: 16/9;
-  background: url('https://images.unsplash.com/photo-1611162617474-5b21e879e113?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80') center/cover;
-  border-radius: var(--radius); position: relative; border: 1px solid var(--border);
-  overflow: hidden; cursor: pointer; transition: opacity 0.2s;
-}
-.yt-video-link:hover { opacity: 0.9; }
-.play-btn {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  width: 60px; height: 60px; background: red; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-.play-btn::after {
-  content: ''; border-left: 15px solid white; border-top: 10px solid transparent; border-bottom: 10px solid transparent;
-  margin-left: 5px;
-}
-
-/* AUTH MODAL */
-.modal-overlay {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px);
-  display: none; align-items: center; justify-content: center; z-index: 1000;
-}
-.modal-overlay.open { display: flex; }
-.auth-box {
-  background: var(--bg-card); border: 1px solid var(--border); width: 100%; max-width: 400px;
-  padding: 40px 30px; border-radius: var(--radius); position: relative; text-align: center;
-}
-.close-modal {
-  position: absolute; top: 15px; right: 20px; background: transparent; border: none;
-  color: var(--text-muted); font-size: 20px; cursor: pointer;
-}
-.auth-box h2 { font-size: 22px; margin-bottom: 10px; }
-.auth-box p { font-size: 14px; color: var(--text-muted); margin-bottom: 25px; }
-
-/* ARTICLE MODAL */
-.article-modal-box {
-  background: var(--bg-card); border: 1px solid var(--border); width: 100%; max-width: 700px;
-  max-height: 80vh; overflow-y: auto; padding: 40px 30px; border-radius: var(--radius); 
-  position: relative; text-align: left;
-}
-.article-modal-box h2 { font-size: 24px; margin-bottom: 15px; color: var(--accent); }
-.article-content { font-size: 15px; color: var(--text-main); line-height: 1.8; }
-.article-content h3 { margin-top: 20px; margin-bottom: 10px; font-size: 18px; }
-.article-content p { margin-bottom: 15px; color: var(--text-muted); }
-.article-content ul { margin-left: 20px; margin-bottom: 15px; color: var(--text-muted); }
-
-/* FOOTER */
-footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: center; color: var(--text-muted); font-size: 14px; margin-top: 60px; }
-
-/* RATING SYSTEM */
-.rating-section { text-align: center; margin-top: 20px; padding: 40px 20px; border-top: 1px solid var(--border); }
-.rating-stars { display: inline-flex; gap: 8px; font-size: 36px; cursor: pointer; margin-top: 15px; }
-.star { color: var(--border); transition: color 0.2s, transform 0.1s; }
-.star.active { color: var(--orange); }
-.star:hover { transform: scale(1.1); }
-.rating-msg { font-size: 14px; color: var(--green); margin-top: 15px; display: none; font-weight: 500; }
-
-/* ADVERTISEMENT PLACEMENTS */
-.ad-space {
-  background: var(--bg-card);
-  border: 1px dashed var(--border);
-  border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 30px auto;
-  text-align: center;
-}
-.ad-leaderboard { width: 100%; max-width: 728px; height: 90px; }
-.ad-banner { width: 100%; max-width: 970px; height: 90px; }
-
-/* Vertical Side Ads */
-.ad-vertical {
-  position: fixed;
-  top: 100px;
-  width: 160px;
-  height: 600px;
-  background: var(--bg-card);
-  border: 1px dashed var(--border);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  font-size: 12px;
-  text-transform: uppercase;
-  text-align: center;
-  z-index: 10;
-}
-.ad-vertical.left { left: 15px; }
-.ad-vertical.right { right: 15px; }
-
-/* Hide side ads on smaller screens so they do not block the timetable tool */
-@media(max-width: 1550px) {
-  .ad-vertical { display: none; }
-}
-
-@media(max-width: 768px) {
-  .nav-links { display: none; }
-  .hero h1 { font-size: 36px; }
-  .tt-grid { grid-template-columns: 60px repeat(7, 120px); }
-}
-</style>
-</head>
-<body>
-
-<div class="ad-vertical left">
-  Left Ad<br>(160x600)
-</div>
-<div class="ad-vertical right">
-  Right Ad<br>(160x600)
-</div>
-
-<div class="modal-overlay" id="authModal">
-  <div class="auth-box">
-    <button class="close-modal" onclick="closeAuth()">✕</button>
-    <h2>Join Studytable</h2>
-    <p>Enter your name and age to generate and save your timetables.</p>
-    
-    <div class="input-group" style="text-align: left;">
-      <label>Your Name</label>
-      <input type="text" id="authName" class="input-field" placeholder="E.g. Rahul">
-    </div>
-    <div class="input-group" style="text-align: left;">
-      <label>Your Age</label>
-      <input type="number" id="authAge" class="input-field" placeholder="E.g. 16" min="10" max="99">
-    </div>
-    
-    <button class="btn btn-full" onclick="signIn()">Sign Up / Log In</button>
-    <p style="margin-top: 15px; font-size: 12px;">By continuing, you agree to our terms of service.</p>
-  </div>
-</div>
-
-<div class="modal-overlay" id="articleModal">
-  <div class="article-modal-box">
-    <button class="close-modal" onclick="closeArticle()">✕</button>
-    <h2 id="modalArticleTitle">Article Title</h2>
-    <div class="article-content" id="modalArticleContent">
-      </div>
-  </div>
-</div>
-
-<nav>
-  <div class="logo">Study<span>table</span></div>
-  <div class="nav-links">
-    <a href="#generator">Generator</a>
-    <a href="#resources">Study Guides</a>
-    <a href="#youtube">YouTube</a>
-  </div>
-  <div id="navAction">
-    <button class="btn" onclick="openAuth()">Sign In</button>
-  </div>
-</nav>
-
-<div class="hero">
-  <h1>Plan Your Study,<br><span>Achieve Your Goals</span></h1>
-  <p>Create a smart, balanced study schedule for JEE, NEET, UPSC, or Boards. Save it, follow it, and see the results.</p>
-  <button class="btn" style="padding: 14px 28px; font-size: 16px;" onclick="scrollToGen()">Start Planning Now</button>
-</div>
-
-<div class="section" style="padding-top: 0; padding-bottom: 0;">
-  <div class="ad-space ad-leaderboard">
-    Advertisement (728x90)
-  </div>
-</div>
-
-<div class="section" id="generator">
-  
-  <div class="dashboard-area" id="userDashboard">
-    <div class="profile-card">
-      <div class="profile-info">
-        <div class="avatar" id="userAvatar">U</div>
-        <div>
-          <div style="font-weight: 600; font-size: 16px;" id="welcomeText">Welcome back!</div>
-          <div style="font-size: 13px; color: var(--text-muted);" id="userInfoDisplay">user details</div>
-        </div>
-      </div>
-      <button class="btn btn-outline" onclick="signOut()">Log Out</button>
-    </div>
-    
-    <h3 style="margin-bottom: 15px; font-size: 20px;">Saved Timetables</h3>
-    <div class="saved-grid" id="savedGrid">
-      </div>
-  </div>
-
-  <div class="section-title">Timetable Generator</div>
-  <div class="section-sub">Select your target exam and enter your preferences.</div>
-
-  <div class="tabs">
-    <div class="tab active" onclick="switchTab('jee', this)">JEE Prep</div>
-    <div class="tab" onclick="switchTab('neet', this)">NEET Prep</div>
-    <div class="tab" onclick="switchTab('upsc', this)">UPSC</div>
-    <div class="tab" onclick="switchTab('custom', this)">Custom</div>
-  </div>
-
-  <div class="tab-panel active" id="panel-jee">
-    <div class="form-grid">
-      <div class="form-box">
-        <h3><span class="step-num">1</span> Study Hours</h3>
-        <div class="input-group">
-          <label>Hours per day</label>
-          <input type="number" id="jeeHours" class="input-field" value="8" min="4" max="16">
-        </div>
-        <div class="input-group">
-          <label>Focus Subject (Needs more time)</label>
-          <select id="jeeFocus" class="input-field">
-            <option value="Physics">Physics</option>
-            <option value="Chemistry">Chemistry</option>
-            <option value="Maths">Maths</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">2</span> Schedule</h3>
-        <div class="input-group">
-          <label>Wake up time</label>
-          <input type="time" class="input-field" value="06:00">
-        </div>
-        <div class="input-group">
-          <label>School / Coaching time</label>
-          <select class="input-field">
-            <option>Morning (8 AM - 2 PM)</option>
-            <option>Evening (4 PM - 8 PM)</option>
-            <option>Self Study (Full Day)</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">3</span> Finish</h3>
-        <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 20px;">Click below to generate a balanced weekly plan based on your inputs. You must be logged in to save.</p>
-        <button class="btn btn-full" onclick="generateAndSave('JEE')">Generate Timetable</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="panel-neet">
-    <div class="form-grid">
-      <div class="form-box">
-        <h3><span class="step-num">1</span> Study Hours</h3>
-        <div class="input-group">
-          <label>Hours per day</label>
-          <input type="number" id="neetHours" class="input-field" value="9" min="4" max="16">
-        </div>
-        <div class="input-group">
-          <label>Focus Subject</label>
-          <select id="neetFocus" class="input-field">
-            <option value="Biology">Biology (Botany/Zoology)</option>
-            <option value="Physics">Physics</option>
-            <option value="Chemistry">Chemistry</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">2</span> Schedule</h3>
-        <div class="input-group">
-          <label>Wake up time</label>
-          <input type="time" class="input-field" value="06:00">
-        </div>
-        <div class="input-group">
-          <label>School / Coaching time</label>
-          <select class="input-field">
-            <option>Morning (8 AM - 2 PM)</option>
-            <option>Evening (4 PM - 8 PM)</option>
-            <option>Self Study (Full Day)</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">3</span> Finish</h3>
-        <button class="btn btn-full" onclick="generateAndSave('NEET')">Generate Timetable</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="panel-upsc">
-    <div class="form-grid">
-      <div class="form-box">
-        <h3><span class="step-num">1</span> Papers</h3>
-        <div class="input-group">
-          <label>Hours per day</label>
-          <input type="number" id="upscHours" class="input-field" value="8" min="4" max="14">
-        </div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">2</span> Reading</h3>
-        <div class="input-group">
-          <label>Newspaper Reading Time</label>
-          <select class="input-field">
-            <option>Morning (1.5 hours)</option>
-            <option>Evening (1.5 hours)</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">3</span> Finish</h3>
-        <button class="btn btn-full" onclick="generateAndSave('UPSC')">Generate Timetable</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="panel-custom">
-    <div class="form-grid">
-      <div class="form-box">
-        <h3><span class="step-num">1</span> Subjects</h3>
-        <div class="input-group"><label>Subject 1</label><input type="text" class="input-field" placeholder="e.g. History"></div>
-        <div class="input-group"><label>Subject 2</label><input type="text" class="input-field" placeholder="e.g. Economics"></div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">2</span> Schedule</h3>
-        <div class="input-group"><label>Hours per day</label><input type="number" class="input-field" value="6"></div>
-      </div>
-      <div class="form-box">
-        <h3><span class="step-num">3</span> Finish</h3>
-        <button class="btn btn-full" onclick="generateAndSave('Custom')">Generate Timetable</button>
-      </div>
-    </div>
-  </div>
-
-  <div class="output-area" id="ttOutput">
-    <div class="output-header">
-      <div class="output-title" id="outputTitle">Your Timetable</div>
-      <div>
-        <button class="btn btn-outline" onclick="alert('PDF download will start shortly!')">Save as PDF</button>
-      </div>
-    </div>
-    <div class="tt-grid" id="outputGrid">
-      </div>
-  </div>
-</div>
-
-<div class="section" style="padding-top: 0; padding-bottom: 0;">
-  <div class="ad-space ad-banner">
-    Advertisement (970x90 or Responsive)
-  </div>
-</div>
-
-<div class="section" id="resources">
-  <div class="section-title">Study Tips & Guides</div>
-  <div class="section-sub">Read our simple guides to improve your focus and score higher.</div>
-  
-  <div class="news-grid" id="articlesGrid">
-    </div>
-</div>
-
-<div class="section" id="youtube">
-  <div class="yt-box">
-    <h2>Watch Our Strategies on YouTube</h2>
-    <p>We post detailed weekly planning guides, motivation, and topper schedules on our channel.</p>
-    <a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="yt-video-link">
-      <div class="play-btn"></div>
-    </a>
-    <br>
-    <a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="btn">Visit Channel & Subscribe</a>
-  </div>
-</div>
-
-<div class="section" style="padding-top: 0; padding-bottom: 0;">
-  <div class="ad-space ad-leaderboard">
-    Advertisement (728x90)
-  </div>
-</div>
-
-<div class="rating-section">
-  <h3>Rate Studytable</h3>
-  <p style="color: var(--text-muted); font-size: 14px;">How helpful is this tool?</p>
-  <div class="rating-stars" id="starContainer">
-    <span class="star" onclick="setRating(1)">★</span>
-    <span class="star" onclick="setRating(2)">★</span>
-    <span class="star" onclick="setRating(3)">★</span>
-    <span class="star" onclick="setRating(4)">★</span>
-    <span class="star" onclick="setRating(5)">★</span>
-  </div>
-  <div class="rating-msg" id="ratingMsg">Thanks for your rating!</div>
-</div>
-
-<footer>
-  <div style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 10px;">Study<span style="color: var(--accent);">table</span></div>
-  <p>Helping students plan their success. Free forever.</p>
-  <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="#">Terms of Use</a>
-    <a href="#">Contact Us</a>
-  </div>
-  <p style="margin-top: 20px; font-size: 12px; color: #666;">© 2026 Studytable. All rights reserved.</p>
-</footer>
-
-<script>
-// --- UTILS ---
-function scrollToGen() {
-  document.getElementById('generator').scrollIntoView({ behavior: 'smooth' });
-}
-
-function switchTab(tabId, element) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  
-  element.classList.add('active');
-  document.getElementById('panel-' + tabId).classList.add('active');
-  document.getElementById('ttOutput').style.display = 'none';
-}
-
-// --- AUTHENTICATION ---
-function openAuth() {
-  document.getElementById('authModal').classList.add('open');
-}
-
-function closeAuth() {
-  document.getElementById('authModal').classList.remove('open');
-}
-
-function signIn() {
-  const name = document.getElementById('authName').value.trim();
-  const age = document.getElementById('authAge').value.trim();
-  
-  if(!name || !age) {
-    alert("Please enter both your name and your age.");
-    return;
-  }
-  
-  // Simple auth simulation using localStorage
-  const user = { name: name, age: age, avatar: name.charAt(0).toUpperCase() };
-  localStorage.setItem('studytable_user', JSON.stringify(user));
-  
-  closeAuth();
-  updateUI();
-  alert("Successfully signed in!");
-}
-
-function signOut() {
-  localStorage.removeItem('studytable_user');
-  updateUI();
-  document.getElementById('ttOutput').style.display = 'none';
-}
-
-function getUser() {
-  const data = localStorage.getItem('studytable_user');
-  return data ? JSON.parse(data) : null;
-}
-
-function updateUI() {
-  const user = getUser();
-  const navAction = document.getElementById('navAction');
-  const dashArea = document.getElementById('userDashboard');
-  
-  if(user) {
-    // Logged in UI
-    navAction.innerHTML = `<button class="btn btn-outline" onclick="scrollToGen()">Dashboard</button>`;
-    dashArea.classList.add('active');
-    document.getElementById('userAvatar').textContent = user.avatar;
-    document.getElementById('welcomeText').textContent = `Welcome, ${user.name}!`;
-    document.getElementById('userInfoDisplay').textContent = `${user.age} years old`;
-    renderSavedTimetables();
-  } else {
-    // Logged out UI
-    navAction.innerHTML = `<button class="btn" onclick="openAuth()">Sign In</button>`;
-    dashArea.classList.remove('active');
-  }
-}
-
-// --- TIMETABLE LOGIC ---
-const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
-const SLOTS = ['Morning Block', 'Afternoon Block', 'Night Block'];
-
-function generateAndSave(examType) {
-  const user = getUser();
-  if(!user) {
-    alert("You need to sign up or log in first to generate and save a timetable.");
-    openAuth();
-    return;
-  }
-
-  // Get subjects based on exam
-  let subjects = [];
-  if(examType === 'JEE') subjects = [{n:'Physics', c:'#3b82f6'}, {n:'Chemistry', c:'#f59e0b'}, {n:'Maths', c:'#10b981'}];
-  else if(examType === 'NEET') subjects = [{n:'Biology', c:'#ef4444'}, {n:'Physics', c:'#3b82f6'}, {n:'Chemistry', c:'#f59e0b'}];
-  else if(examType === 'UPSC') subjects = [{n:'GS Paper I', c:'#3b82f6'}, {n:'GS Paper II', c:'#10b981'}, {n:'Optional', c:'#8b5cf6'}];
-  else subjects = [{n:'Subject 1', c:'#3b82f6'}, {n:'Subject 2', c:'#f59e0b'}, {n:'Revision', c:'#10b981'}];
-
-  // Generate grid HTML
-  let gridHTML = '<div class="tt-cell tt-header-cell"></div>';
-  DAYS.forEach(d => gridHTML += `<div class="tt-cell tt-header-cell">${d}</div>`);
-  
-  SLOTS.forEach((slot, sIndex) => {
-    gridHTML += `<div class="tt-cell tt-header-cell" style="font-size:11px">${slot}</div>`;
-    DAYS.forEach((d, dIndex) => {
-      // Add a rest block on Sunday night
-      if(dIndex === 6 && sIndex === 2) {
-        gridHTML += `<div class="tt-cell" style="background:var(--bg-hover); color:var(--text-muted)">REST</div>`;
-        return;
-      }
-      const sub = subjects[(sIndex + dIndex) % subjects.length];
-      const time = (Math.random() * 1 + 2).toFixed(1) + ' hrs';
-      gridHTML += `<div class="tt-cell" style="border-left: 3px solid ${sub.c}">
-                    <div class="subject-name" style="color:${sub.c}">${sub.n}</div>
-                    <div class="subject-time">${time}</div>
-                   </div>`;
-    });
-  });
-
-  // Display Output
-  const title = `${examType} Master Plan`;
-  document.getElementById('outputTitle').textContent = title;
-  document.getElementById('outputGrid').innerHTML = gridHTML;
-  document.getElementById('ttOutput').style.display = 'block';
-  document.getElementById('ttOutput').scrollIntoView({ behavior: 'smooth' });
-
-  // Save to LocalStorage
-  saveTimetableData(title, gridHTML);
-}
-
-function saveTimetableData(title, html) {
-  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
-  const newEntry = {
-    id: Date.now(),
-    title: title,
-    date: new Date().toLocaleDateString(),
-    html: html
-  };
-  // Push to beginning of array
-  saved.unshift(newEntry);
-  localStorage.setItem('studytable_saved', JSON.stringify(saved));
-  renderSavedTimetables();
-}
-
-function renderSavedTimetables() {
-  const container = document.getElementById('savedGrid');
-  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
-  
-  if(saved.length === 0) {
-    container.innerHTML = '<p style="color:var(--text-muted); font-size:14px;">You haven\'t created any timetables yet.</p>';
-    return;
-  }
-
-  let html = '';
-  saved.forEach(item => {
-    html += `
-      <div class="saved-card">
-        <div class="saved-title">${item.title}</div>
-        <div class="saved-date">Created on ${item.date}</div>
-        <button class="btn btn-outline" style="padding: 6px 12px; font-size: 12px;" onclick="loadSavedTimetable(${item.id})">View Timetable</button>
-        <button class="btn btn-outline" style="padding: 6px 12px; font-size: 12px; color: var(--red); border-color: var(--red); margin-left: 5px;" onclick="deleteTimetable(${item.id})">Delete</button>
-      </div>
-    `;
-  });
-  container.innerHTML = html;
-}
-
-function loadSavedTimetable(id) {
-  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
-  const item = saved.find(s => s.id === id);
-  if(item) {
-    document.getElementById('outputTitle').textContent = item.title;
-    document.getElementById('outputGrid').innerHTML = item.html;
-    document.getElementById('ttOutput').style.display = 'block';
-    document.getElementById('ttOutput').scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-function deleteTimetable(id) {
-  if(!confirm("Are you sure you want to delete this timetable?")) return;
-  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
-  saved = saved.filter(s => s.id !== id);
-  localStorage.setItem('studytable_saved', JSON.stringify(saved));
-  renderSavedTimetables();
-  document.getElementById('ttOutput').style.display = 'none';
-}
-
-// Check session on page load
-window.onload = function() {
-  updateUI();
-  renderArticles();
-};
-
-// --- ARTICLE LOGIC ---
-const articlesData = [
-  {
-    tag: "Focus & Productivity",
-    title: "How to Study with 100% Concentration",
-    desc: "Learn simple tricks to stop getting distracted and finish your work faster.",
-    content: `
-      <h3>1. Hide Your Phone</h3>
-      <p>The biggest distraction is your phone. Put it in another room or turn it completely off while studying. Do not just put it face down on your desk.</p>
-      <h3>2. Use the 25-Minute Rule (Pomodoro)</h3>
-      <p>Set a timer for 25 minutes. Study without stopping until the timer rings. Then, take a 5-minute break to stretch or drink water. This keeps your brain fresh.</p>
-      <h3>3. Clear Your Desk</h3>
-      <p>A messy desk makes a messy mind. Keep only the books and pens you need for the current subject on your table.</p>
-      <h3>4. Drink Water and Sleep Well</h3>
-      <p>If you are tired or thirsty, you cannot focus. Sleep for 7-8 hours every night so your brain is ready to learn.</p>
-    `
-  },
-  {
-    tag: "NEET Guide",
-    title: "How to Study for NEET: A Simple Plan",
-    desc: "The best way to prepare for NEET and score high in Biology, Chemistry, and Physics.",
-    content: `
-      <h3>1. Biology is Your Best Friend</h3>
-      <p>Biology is half of the NEET exam. Read the NCERT Biology book line by line. Do not skip any diagrams or summary points. Make short notes.</p>
-      <h3>2. Practice Physics Daily</h3>
-      <p>Do not just read Physics. You must solve problems every single day. Start with easy formula-based questions and slowly try harder ones.</p>
-      <h3>3. Master Chemistry in Three Parts</h3>
-      <ul>
-        <li><b>Physical Chemistry:</b> Treat it like math. Practice solving equations.</li>
-        <li><b>Organic Chemistry:</b> Understand how reactions happen. Practice naming compounds.</li>
-        <li><b>Inorganic Chemistry:</b> Memorize the NCERT textbook. Read it multiple times.</li>
-      </ul>
-      <h3>4. Give Mock Tests</h3>
-      <p>Sit for 3 hours and give a full test every week. Find your mistakes and fix them.</p>
-    `
-  },
-  {
-    tag: "JEE Guide",
-    title: "How to Clear JEE Mains & Advanced",
-    desc: "A step-by-step method to balance school, coaching, and self-study for JEE.",
-    content: `
-      <h3>1. Build Strong Basics</h3>
-      <p>Do not jump to hard books right away. Understand the basic concepts from NCERT and your coaching notes first.</p>
-      <h3>2. Math Needs Practice, Not Reading</h3>
-      <p>Mathematics is all about solving problems fast. Learn shortcuts but also understand the core steps. Practice daily.</p>
-      <h3>3. Physics Needs Imagination</h3>
-      <p>Try to draw diagrams for Physics problems. If you can draw it, you can solve it. Understand the rules of force, motion, and electricity deeply.</p>
-      <h3>4. Analyze Previous Year Questions (PYQs)</h3>
-      <p>The secret to JEE is solving questions from the last 10 years. This shows you exactly what the exam will ask.</p>
-    `
-  }
-];
-
-function renderArticles() {
-  const container = document.getElementById('articlesGrid');
-  let html = '';
-  articlesData.forEach((article, index) => {
-    html += `
-      <div class="news-card" style="cursor: pointer;" onclick="openArticle(${index})">
-        <div class="news-tag">${article.tag}</div>
-        <div class="news-title">${article.title}</div>
-        <div class="news-desc">${article.desc}</div>
-        <div style="margin-top: 15px; font-size: 12px; color: var(--accent); font-weight: 600;">Read Full Article →</div>
-      </div>
-    `;
-  });
-  container.innerHTML = html;
-}
-
-function openArticle(index) {
-  const article = articlesData[index];
-  document.getElementById('modalArticleTitle').textContent = article.title;
-  document.getElementById('modalArticleContent').innerHTML = article.content;
-  document.getElementById('articleModal').classList.add('open');
-}
-
-function closeArticle() {
-  document.getElementById('articleModal').classList.remove('open');
-}
-
-// --- RATING LOGIC ---
-function setRating(stars) {
-  const starElements = document.querySelectorAll('.star');
-  
-  // Color the stars up to the clicked one
-  starElements.forEach((star, index) => {
-    if (index < stars) {
-      star.classList.add('active');
-    } else {
-      star.classList.remove('active');
-    }
-  });
-  
-  // Show the thank you message
-  const msg = document.getElementById('ratingMsg');
-  msg.style.display = 'block';
-  msg.textContent = `Thanks for giving us ${stars} stars!`;
-}
-</script>
-</body>
-</html>
+</html>   
