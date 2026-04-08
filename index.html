@@ -9,8 +9,7 @@
   
   <meta name="keywords" content="free study timetable, study timetable generator, JEE study planner, NEET exam schedule, weekly study table maker, student time management tool, class 12 board planner">
   <meta name="google-site-verification" content="Cc02ry_8C-b-vRH56jbGI1YmIQEzOm8LvBNl89TdSw4" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9335905935507660"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9335905935507660" crossorigin="anonymous"></script>
   
   <script type="application/ld+json">
   {
@@ -32,9 +31,566 @@
   <meta property="og:title" content="Free Study Timetable Planner & Generator">
   <meta property="og:description" content="Stop planning, start studying. Create your custom schedule in seconds.">
   <meta property="og:type" content="website">
-
   <meta name="author" content="create for free">
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+  /* BASE STYLES */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #09090b;
+    --bg-card: #18181b;
+    --bg-hover: #27272a;
+    --border: #3f3f46;
+    --text-main: #f4f4f5;
+    --text-muted: #a1a1aa;
+    --accent: #3b82f6;
+    --accent-hover: #2563eb;
+    --green: #10b981;
+    --orange: #f59e0b;
+    --red: #ef4444;
+    --radius: 12px;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAVBAR */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(9, 9, 11, 0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 70px;
+  }
+  .logo { font-size: 20px; font-weight: 800; color: var(--text-main); letter-spacing: -0.5px; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a { color: var(--text-muted); font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text-main); }
+  .btn {
+    background: var(--accent); color: #fff; border: none;
+    padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .btn:hover { background: var(--accent-hover); }
+  .btn-outline {
+    background: transparent; border: 1px solid var(--border); color: var(--text-main);
+  }
+  .btn-outline:hover { background: var(--bg-hover); }
+
+  /* HERO SECTION */
+  .hero { padding: 80px 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+  .hero h1 { font-size: 48px; font-weight: 800; margin-bottom: 20px; letter-spacing: -1px; line-height: 1.2; }
+  .hero h1 span { color: var(--accent); }
+  .hero p { font-size: 18px; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
+
+  /* SECTIONS */
+  .section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; }
+  .section-title { font-size: 28px; font-weight: 700; margin-bottom: 10px; }
+  .section-sub { color: var(--text-muted); margin-bottom: 40px; font-size: 15px; }
+
+  /* CHECKBOX GROUP */
+  .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 5px; }
+  .checkbox-item { display: flex; align-items: center; gap: 5px; font-size: 13px; color: var(--text-main); cursor: pointer; }
+
+  /* USER PROFILE & SAVED TIMETABLES */
+  .dashboard-area { display: none; margin-bottom: 40px; }
+  .dashboard-area.active { display: block; }
+  .profile-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .profile-info { display: flex; align-items: center; gap: 15px; }
+  .avatar {
+    width: 45px; height: 45px; border-radius: 50%; background: var(--accent);
+    display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 18px;
+  }
+
+  .saved-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+  .saved-card {
+    background: var(--bg-card); border: 1px solid var(--border); padding: 20px;
+    border-radius: var(--radius); transition: border 0.2s;
+  }
+  .saved-card:hover { border-color: var(--accent); }
+  .saved-title { font-weight: 600; font-size: 16px; margin-bottom: 5px; }
+  .saved-date { font-size: 13px; color: var(--text-muted); margin-bottom: 15px; }
+
+  /* TABS & FORM */
+  .tabs { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
+  .tab {
+    padding: 10px 20px; border-radius: 8px; font-size: 14px; font-weight: 600;
+    background: var(--bg-card); border: 1px solid var(--border); color: var(--text-muted);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .tab.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+  .form-box { background: var(--bg-card); border: 1px solid var(--border); padding: 25px; border-radius: var(--radius); }
+  .form-box h3 { font-size: 16px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .step-num { 
+    background: var(--accent); color: #fff; width: 24px; height: 24px; 
+    display: flex; align-items: center; justify-content: center; border-radius: 50%; font-size: 12px; font-weight: 700;
+  }
+  .input-group { margin-bottom: 15px; }
+  .input-group label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
+  .input-field {
+    width: 100%; background: var(--bg); border: 1px solid var(--border); color: var(--text-main);
+    padding: 12px; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif;
+    outline: none; transition: border 0.2s;
+  }
+  .input-field:focus { border-color: var(--accent); }
+  .btn-full { width: 100%; padding: 14px; font-size: 15px; margin-top: 10px; }
+
+  /* TIMETABLE OUTPUT */
+  .output-area {
+    background: var(--bg-card); border: 1px solid var(--border); padding: 30px;
+    border-radius: var(--radius); margin-top: 40px; display: none;
+  }
+  .output-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .output-title { font-size: 20px; font-weight: 700; }
+  .tt-grid { display: grid; grid-template-columns: 120px repeat(7, 1fr); gap: 5px; overflow-x: auto; }
+  .tt-cell {
+    background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 10px; text-align: center; font-size: 11px; min-height: 70px;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+  }
+  .tt-header-cell { background: transparent; border: none; font-weight: 600; color: var(--text-muted); }
+  .subject-name { font-weight: 700; margin-bottom: 4px; font-size: 12px; }
+  .subject-time { font-size: 10px; opacity: 0.8; }
+
+  /* ARTICLES GRID */
+  .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+  .news-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; transition: transform 0.2s; display: block;
+  }
+  .news-card:hover { transform: translateY(-5px); border-color: var(--text-muted); }
+  .news-tag { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; margin-bottom: 10px; }
+  .news-title { font-size: 16px; font-weight: 600; margin-bottom: 10px; }
+  .news-desc { font-size: 13px; color: var(--text-muted); }
+
+  /* RATING SYSTEM */
+  .rating-section { text-align: center; margin-top: 20px; padding: 40px 20px; border-top: 1px solid var(--border); }
+  .rating-stars { display: inline-flex; gap: 8px; font-size: 36px; cursor: pointer; margin-top: 15px; }
+  .star { color: var(--border); transition: color 0.2s, transform 0.1s; }
+  .star.active { color: var(--orange); }
+  .star:hover { transform: scale(1.1); }
+  .rating-msg { font-size: 14px; color: var(--green); margin-top: 15px; display: none; font-weight: 500; }
+
+  /* AD PLACEMENTS */
+  .ad-space { background: var(--bg-card); border: 1px dashed var(--border); border-radius: var(--radius); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 30px auto; text-align: center; }
+  .ad-leaderboard { width: 100%; max-width: 728px; height: 90px; }
+  .ad-banner { width: 100%; max-width: 970px; height: 90px; }
+  .ad-vertical { position: fixed; top: 100px; width: 160px; height: 600px; background: var(--bg-card); border: 1px dashed var(--border); display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-muted); font-size: 12px; text-transform: uppercase; text-align: center; z-index: 10; }
+  .ad-vertical.left { left: 15px; }
+  .ad-vertical.right { right: 15px; }
+
+  @media(max-width: 1550px) { .ad-vertical { display: none; } }
+  @media(max-width: 768px) { .nav-links { display: none; } .hero h1 { font-size: 36px; } .tt-grid { grid-template-columns: 100px repeat(7, 140px); } }
+
+  /* AUTH MODAL */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; z-index: 1000; }
+  .modal-overlay.open { display: flex; }
+  .auth-box, .article-modal-box { background: var(--bg-card); border: 1px solid var(--border); width: 100%; max-width: 400px; padding: 40px 30px; border-radius: var(--radius); position: relative; text-align: center; }
+  .article-modal-box { max-width: 700px; max-height: 80vh; overflow-y: auto; text-align: left; }
+  .close-modal { position: absolute; top: 15px; right: 20px; background: transparent; border: none; color: var(--text-muted); font-size: 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<div class="ad-vertical left">Left Ad<br>(160x600)</div>
+<div class="ad-vertical right">Right Ad<br>(160x600)</div>
+
+<div class="modal-overlay" id="authModal">
+  <div class="auth-box">
+    <button class="close-modal" onclick="closeAuth()">✕</button>
+    <h2>Join Studytable</h2>
+    <p>Enter your name and age to generate and save your timetables.</p>
+    <div class="input-group" style="text-align: left;">
+      <label>Your Name</label>
+      <input type="text" id="authName" class="input-field" placeholder="E.g. Rahul">
+    </div>
+    <div class="input-group" style="text-align: left;">
+      <label>Your Age</label>
+      <input type="number" id="authAge" class="input-field" placeholder="E.g. 16" min="10" max="99">
+    </div>
+    <button class="btn btn-full" onclick="signIn()">Sign Up / Log In</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="articleModal">
+  <div class="article-modal-box">
+    <button class="close-modal" onclick="closeArticle()">✕</button>
+    <h2 id="modalArticleTitle">Article Title</h2>
+    <div class="article-content" id="modalArticleContent"></div>
+  </div>
+</div>
+
+<nav>
+  <div class="logo">Study<span>table</span></div>
+  <div class="nav-links">
+    <a href="#generator">Generator</a>
+    <a href="#resources">Study Guides</a>
+    <a href="#youtube">YouTube</a>
+  </div>
+  <div id="navAction">
+    <button class="btn" onclick="openAuth()">Sign In</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Plan Your Study,<br><span>Achieve Your Goals</span></h1>
+  <p>Create a smart, balanced study schedule. Save it, follow it, and see the results.</p>
+  <button class="btn" style="padding: 14px 28px; font-size: 16px;" onclick="scrollToGen()">Start Planning Now</button>
+</div>
+
+<div class="section" id="generator">
+  <div class="dashboard-area" id="userDashboard">
+    <div class="profile-card">
+      <div class="profile-info"><div class="avatar" id="userAvatar">U</div>
+      <div><div style="font-weight: 600; id='welcomeText'">Welcome back!</div><div style="font-size: 13px; color: var(--text-muted);" id="userInfoDisplay"></div></div></div>
+      <button class="btn btn-outline" onclick="signOut()">Log Out</button>
+    </div>
+    <h3 style="margin-bottom: 15px;">Saved Timetables</h3>
+    <div class="saved-grid" id="savedGrid"></div>
+  </div>
+
+  <div class="section-title">Timetable Generator</div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('jee', this)">JEE Prep</div>
+    <div class="tab" onclick="switchTab('neet', this)">NEET Prep</div>
+    <div class="tab" onclick="switchTab('school', this)">Class 6-10</div>
+    <div class="tab" onclick="switchTab('custom', this)">Custom</div>
+  </div>
+
+  <div class="tab-panel active" id="panel-jee">
+    <div class="form-grid">
+      <div class="form-box">
+        <h3><span class="step-num">1</span> Subjects</h3>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="jeeSub" value="Physics" checked> Physics</label>
+          <label class="checkbox-item"><input type="checkbox" name="jeeSub" value="Chemistry" checked> Chemistry</label>
+          <label class="checkbox-item"><input type="checkbox" name="jeeSub" value="Maths" checked> Maths</label>
+        </div>
+      </div>
+      <div class="form-box">
+        <h3><span class="step-num">2</span> Daily Hours & Wakeup</h3>
+        <input type="number" id="jeeHours" class="input-field" value="8" min="4" max="16">
+        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
+        <input type="time" id="jeeWake" class="input-field" value="06:00">
+      </div>
+      <div class="form-box">
+        <h3><span class="step-num">3</span> Action</h3>
+        <button class="btn btn-full" onclick="aiGenerate('JEE')">AI Generate Timetable</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-neet">
+    <div class="form-grid">
+      <div class="form-box">
+        <h3><span class="step-num">1</span> Subjects</h3>
+        <div class="checkbox-group">
+          <label class="checkbox-item"><input type="checkbox" name="neetSub" value="Biology" checked> Biology</label>
+          <label class="checkbox-item"><input type="checkbox" name="neetSub" value="Physics" checked> Physics</label>
+          <label class="checkbox-item"><input type="checkbox" name="neetSub" value="Chemistry" checked> Chemistry</label>
+        </div>
+      </div>
+      <div class="form-box">
+        <h3><span class="step-num">2</span> Daily Hours</h3>
+        <input type="number" id="neetHours" class="input-field" value="9" min="4" max="16">
+        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
+        <input type="time" id="neetWake" class="input-field" value="06:00">
+      </div>
+      <div class="form-box">
+        <h3><span class="step-num">3</span> Action</h3>
+        <button class="btn btn-full" onclick="aiGenerate('NEET')">AI Generate Timetable</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-school">
+    <div class="form-grid">
+      <div class="form-box">
+        <h3><span class="step-num">1</span> Choose Class</h3>
+        <select id="schoolClass" class="input-field">
+          <option value="6th">Class 6th</option>
+          <option value="7th">Class 7th</option>
+          <option value="8th">Class 8th</option>
+          <option value="9th">Class 9th</option>
+          <option value="10th">Class 10th</option>
+        </select>
+      </div>
+      <div class="form-box">
+        <h3><span class="step-num">2</span> Daily Hours</h3>
+        <input type="number" id="schoolHours" class="input-field" value="5" min="2" max="12">
+        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
+        <input type="time" id="schoolWake" class="input-field" value="07:00">
+      </div>
+      <div class="form-box">
+        <h3><span class="step-num">3</span> Action</h3>
+        <button class="btn btn-full" onclick="aiGenerate('SCHOOL')">Apply Class Template</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="panel-custom">
+    <div class="form-grid">
+      <div class="form-box">
+        <h3><span class="step-num">1</span> Goal</h3>
+        <input type="text" id="customGoal" class="input-field" placeholder="e.g. UPSC / Board Prep">
+      </div>
+      <div class="form-box">
+        <h3><span class="step-num">2</span> Daily Hours</h3>
+        <input type="number" id="customHours" class="input-field" value="6" min="1" max="18">
+        <label style="font-size:12px; color:var(--text-muted)">Wake up time</label>
+        <input type="time" id="customWake" class="input-field" value="08:00">
+      </div>
+      <div class="form-box">
+        <h3><span class="step-num">3</span> Action</h3>
+        <button class="btn btn-full" onclick="aiGenerate('Custom')">Generate</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="output-area" id="ttOutput">
+    <div class="output-header">
+      <div class="output-title" id="outputTitle">Your Timetable</div>
+      <button class="btn btn-outline" onclick="window.print()">Print / PDF</button>
+    </div>
+    <div class="tt-grid" id="outputGrid"></div>
+  </div>
+</div>
+
+<div class="section" id="resources">
+  <div class="section-title">Study Tips & Guides</div>
+  <div class="news-grid" id="articlesGrid"></div>
+</div>
+
+<div class="section" id="youtube">
+  <div class="yt-box">
+    <h2>Watch Our Strategies</h2>
+    <a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="yt-video-link"><div class="play-btn"></div></a>
+    <br><a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="btn">Subscribe</a>
+  </div>
+</div>
+
+<div class="rating-section">
+  <h3>Rate Studytable</h3>
+  <div class="rating-stars" id="starContainer">
+    <span class="star" onclick="setRating(1)">★</span>
+    <span class="star" onclick="setRating(2)">★</span>
+    <span class="star" onclick="setRating(3)">★</span>
+    <span class="star" onclick="setRating(4)">★</span>
+    <span class="star" onclick="setRating(5)">★</span>
+  </div>
+  <div class="rating-msg" id="ratingMsg"></div>
+</div>
+
+<footer>
+  <div style="font-size: 20px; font-weight: 800; color: #fff;">Study<span>table</span></div>
+  <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="#">Terms</a>
+  </div>
+</footer>
+
+<script>
+const DAYS = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+
+function scrollToGen() { document.getElementById('generator').scrollIntoView({ behavior: 'smooth' }); }
+
+function switchTab(tabId, element) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  element.classList.add('active');
+  document.getElementById('panel-' + tabId).classList.add('active');
+  document.getElementById('ttOutput').style.display = 'none';
+}
+
+function openAuth() { document.getElementById('authModal').classList.add('open'); }
+function closeAuth() { document.getElementById('authModal').classList.remove('open'); }
+
+function signIn() {
+  const name = document.getElementById('authName').value;
+  const age = document.getElementById('authAge').value;
+  if(!name || !age) return alert("Fill all fields");
+  localStorage.setItem('studytable_user', JSON.stringify({ name, age, avatar: name[0].toUpperCase() }));
+  closeAuth(); updateUI();
+}
+
+function signOut() { localStorage.removeItem('studytable_user'); updateUI(); }
+
+function getUser() { return JSON.parse(localStorage.getItem('studytable_user')); }
+
+function updateUI() {
+  const user = getUser();
+  const dash = document.getElementById('userDashboard');
+  if(user) {
+    document.getElementById('navAction').innerHTML = `<button class='btn btn-outline'>${user.name}</button>`;
+    dash.classList.add('active');
+    document.getElementById('userAvatar').textContent = user.avatar;
+    document.getElementById('userInfoDisplay').textContent = `${user.age} Years Old`;
+    renderSavedTimetables();
+  } else {
+    document.getElementById('navAction').innerHTML = `<button class='btn' onclick='openAuth()'>Sign In</button>`;
+    dash.classList.remove('active');
+  }
+}
+
+// AI TIMETABLE LOGIC
+function aiGenerate(type) {
+  const user = getUser();
+  if(!user) { openAuth(); return; }
+
+  let hours, wakeTime, subjects = [];
+  
+  if(type === 'JEE') {
+    hours = parseInt(document.getElementById('jeeHours').value);
+    wakeTime = document.getElementById('jeeWake').value;
+    document.querySelectorAll('input[name="jeeSub"]:checked').forEach(i => subjects.push(i.value));
+  } else if(type === 'NEET') {
+    hours = parseInt(document.getElementById('neetHours').value);
+    wakeTime = document.getElementById('neetWake').value;
+    document.querySelectorAll('input[name="neetSub"]:checked').forEach(i => subjects.push(i.value));
+  } else if(type === 'SCHOOL') {
+    hours = parseInt(document.getElementById('schoolHours').value);
+    wakeTime = document.getElementById('schoolWake').value;
+    subjects = ['Maths', 'Science', 'English', 'Social', 'Revision'];
+  } else {
+    hours = parseInt(document.getElementById('customHours').value);
+    wakeTime = document.getElementById('customWake').value;
+    subjects = ['Study Block 1', 'Study Block 2', 'Review'];
+  }
+
+  if(subjects.length === 0) subjects = ['General Study'];
+
+  generateTimetableUI(type, subjects, hours, wakeTime);
+}
+
+function generateTimetableUI(type, subjects, dailyHours, startTimeStr) {
+  const grid = document.getElementById('outputGrid');
+  let html = '<div class="tt-cell tt-header-cell">Time Slot</div>';
+  DAYS.forEach(d => html += `<div class="tt-cell tt-header-cell">${d}</div>`);
+
+  // Calculate Blocks
+  const blocksPerDay = 3; 
+  const hoursPerBlock = (dailyHours / blocksPerDay).toFixed(1);
+  
+  // Start Time Logic
+  let [h, m] = startTimeStr.split(':').map(Number);
+
+  for(let i=0; i < blocksPerDay; i++) {
+    let startStr = formatTime(h, m);
+    // Move time forward
+    h += Math.floor(hoursPerBlock);
+    m += (hoursPerBlock % 1) * 60;
+    if(m >= 60) { h++; m -= 60; }
+    let endStr = formatTime(h, m);
+
+    html += `<div class="tt-cell tt-header-cell" style="font-size:10px">${startStr} - ${endStr}</div>`;
+    
+    DAYS.forEach((day, dIndex) => {
+      const sub = subjects[(i + dIndex) % subjects.length];
+      const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+      const color = colors[subjects.indexOf(sub) % colors.length] || '#3b82f6';
+      
+      html += `<div class="tt-cell" style="border-left: 3px solid ${color}">
+                <div class="subject-name" style="color:${color}">${sub}</div>
+                <div class="subject-time">${hoursPerBlock}h Session</div>
+              </div>`;
+    });
+    
+    // Add gap for next block
+    h += 1; // 1 hour break
+  }
+
+  grid.innerHTML = html;
+  document.getElementById('outputTitle').textContent = `${type} Plan (${dailyHours}h/day)`;
+  document.getElementById('ttOutput').style.display = 'block';
+  document.getElementById('ttOutput').scrollIntoView({ behavior: 'smooth' });
+  
+  saveToHistory(`${type} (${dailyHours}h)`, html);
+}
+
+function formatTime(h, m) {
+  h = h % 24;
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  const displayH = h % 12 || 12;
+  const displayM = m.toString().padStart(2, '0');
+  return `${displayH}:${displayM} ${ampm}`;
+}
+
+function saveToHistory(title, html) {
+  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
+  saved.unshift({ id: Date.now(), title, date: new Date().toLocaleDateString(), html });
+  localStorage.setItem('studytable_saved', JSON.stringify(saved.slice(0, 10)));
+  renderSavedTimetables();
+}
+
+function renderSavedTimetables() {
+  const container = document.getElementById('savedGrid');
+  let saved = JSON.parse(localStorage.getItem('studytable_saved') || '[]');
+  container.innerHTML = saved.map(item => `
+    <div class="saved-card">
+      <div class="saved-title">${item.title}</div>
+      <button class="btn btn-outline" style="font-size:11px" onclick="loadSaved(${item.id})">View</button>
+    </div>
+  `).join('');
+}
+
+function loadSaved(id) {
+  const item = JSON.parse(localStorage.getItem('studytable_saved')).find(i => i.id === id);
+  document.getElementById('outputGrid').innerHTML = item.html;
+  document.getElementById('ttOutput').style.display = 'block';
+}
+
+// ARTICLES
+const articlesData = [
+  { title: "How to Concentration", tag: "Focus", content: "Use Pomodoro... Hide your phone... Sleep 8 hours." },
+  { title: "NEET Success", tag: "NEET", content: "NCERT is king. Practice 100 MCQs daily." },
+  { title: "JEE Strategy", tag: "JEE", content: "Focus on Calculus and Mechanics. Solve 10 years PYQs." }
+];
+
+function renderArticles() {
+  document.getElementById('articlesGrid').innerHTML = articlesData.map((a, i) => `
+    <div class="news-card" onclick="openArticle(${i})">
+      <div class="news-tag">${a.tag}</div>
+      <div class="news-title">${a.title}</div>
+      <div style="color:var(--accent); font-size:12px; margin-top:10px">Read More →</div>
+    </div>
+  `).join('');
+}
+
+function openArticle(i) {
+  const a = articlesData[i];
+  document.getElementById('modalArticleTitle').textContent = a.title;
+  document.getElementById('modalArticleContent').textContent = a.content;
+  document.getElementById('articleModal').classList.add('open');
+}
+function closeArticle() { document.getElementById('articleModal').classList.remove('open'); }
+
+function setRating(n) {
+  document.querySelectorAll('.star').forEach((s, i) => s.classList.toggle('active', i < n));
+  document.getElementById('ratingMsg').textContent = `Rated ${n} Stars! Thanks.`;
+}
+
+window.onload = () => { updateUI(); renderArticles(); };
+</script>
+</body>
+</html>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
