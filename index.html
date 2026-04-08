@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -294,7 +296,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
 </head>
 <body>
 
-<!-- VERTICAL SIDE ADS (Desktop Only) -->
 <div class="ad-vertical left">
   Left Ad<br>(160x600)
 </div>
@@ -302,7 +303,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
   Right Ad<br>(160x600)
 </div>
 
-<!-- AUTH MODAL -->
 <div class="modal-overlay" id="authModal">
   <div class="auth-box">
     <button class="close-modal" onclick="closeAuth()">✕</button>
@@ -323,18 +323,15 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
   </div>
 </div>
 
-<!-- ARTICLE MODAL -->
 <div class="modal-overlay" id="articleModal">
   <div class="article-modal-box">
     <button class="close-modal" onclick="closeArticle()">✕</button>
     <h2 id="modalArticleTitle">Article Title</h2>
     <div class="article-content" id="modalArticleContent">
-      <!-- Content injected here -->
-    </div>
+      </div>
   </div>
 </div>
 
-<!-- NAVBAR -->
 <nav>
   <div class="logo">Study<span>table</span></div>
   <div class="nav-links">
@@ -347,24 +344,20 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
   </div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <h1>Plan Your Study,<br><span>Achieve Your Goals</span></h1>
   <p>Create a smart, balanced study schedule for JEE, NEET, UPSC, or Boards. Save it, follow it, and see the results.</p>
   <button class="btn" style="padding: 14px 28px; font-size: 16px;" onclick="scrollToGen()">Start Planning Now</button>
 </div>
 
-<!-- AD SPACE 1: Top Leaderboard (High Visibility, High Pay) -->
 <div class="section" style="padding-top: 0; padding-bottom: 0;">
   <div class="ad-space ad-leaderboard">
     Advertisement (728x90)
   </div>
 </div>
 
-<!-- MAIN GENERATOR SECTION -->
 <div class="section" id="generator">
   
-  <!-- LOGGED IN DASHBOARD -->
   <div class="dashboard-area" id="userDashboard">
     <div class="profile-card">
       <div class="profile-info">
@@ -379,8 +372,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
     
     <h3 style="margin-bottom: 15px; font-size: 20px;">Saved Timetables</h3>
     <div class="saved-grid" id="savedGrid">
-      <!-- Saved timetables will appear here -->
-    </div>
+      </div>
   </div>
 
   <div class="section-title">Timetable Generator</div>
@@ -393,7 +385,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
     <div class="tab" onclick="switchTab('custom', this)">Custom</div>
   </div>
 
-  <!-- JEE FORM -->
   <div class="tab-panel active" id="panel-jee">
     <div class="form-grid">
       <div class="form-box">
@@ -434,7 +425,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
     </div>
   </div>
 
-  <!-- NEET FORM -->
   <div class="tab-panel" id="panel-neet">
     <div class="form-grid">
       <div class="form-box">
@@ -474,7 +464,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
     </div>
   </div>
 
-  <!-- UPSC FORM -->
   <div class="tab-panel" id="panel-upsc">
     <div class="form-grid">
       <div class="form-box">
@@ -501,7 +490,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
     </div>
   </div>
 
-  <!-- CUSTOM FORM -->
   <div class="tab-panel" id="panel-custom">
     <div class="form-grid">
       <div class="form-box">
@@ -520,7 +508,6 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
     </div>
   </div>
 
-  <!-- OUTPUT AREA -->
   <div class="output-area" id="ttOutput">
     <div class="output-header">
       <div class="output-title" id="outputTitle">Your Timetable</div>
@@ -529,34 +516,28 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
       </div>
     </div>
     <div class="tt-grid" id="outputGrid">
-      <!-- Generated via JS -->
-    </div>
+      </div>
   </div>
 </div>
 
-<!-- AD SPACE 2: Mid-Page Banner (Good for users scrolling down after making a timetable) -->
 <div class="section" style="padding-top: 0; padding-bottom: 0;">
   <div class="ad-space ad-banner">
     Advertisement (970x90 or Responsive)
   </div>
 </div>
 
-<!-- STUDY ARTICLES SECTION -->
 <div class="section" id="resources">
   <div class="section-title">Study Tips & Guides</div>
   <div class="section-sub">Read our simple guides to improve your focus and score higher.</div>
   
   <div class="news-grid" id="articlesGrid">
-    <!-- Articles generated via JS -->
-  </div>
+    </div>
 </div>
 
-<!-- YOUTUBE SECTION -->
 <div class="section" id="youtube">
   <div class="yt-box">
     <h2>Watch Our Strategies on YouTube</h2>
     <p>We post detailed weekly planning guides, motivation, and topper schedules on our channel.</p>
-    <!-- Clicking this opens the provided YouTube channel link in a new tab -->
     <a href="https://www.youtube.com/channel/UCnC5o5H4sKfAQYtTqucrteg" target="_blank" class="yt-video-link">
       <div class="play-btn"></div>
     </a>
@@ -565,14 +546,12 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
   </div>
 </div>
 
-<!-- AD SPACE 3: Bottom Leaderboard -->
 <div class="section" style="padding-top: 0; padding-bottom: 0;">
   <div class="ad-space ad-leaderboard">
     Advertisement (728x90)
   </div>
 </div>
 
-<!-- RATING SECTION -->
 <div class="rating-section">
   <h3>Rate Studytable</h3>
   <p style="color: var(--text-muted); font-size: 14px;">How helpful is this tool?</p>
@@ -590,7 +569,7 @@ footer { border-top: 1px solid var(--border); padding: 40px 5%; text-align: cent
   <div style="font-size: 20px; font-weight: 800; color: #fff; margin-bottom: 10px;">Study<span style="color: var(--accent);">table</span></div>
   <p>Helping students plan their success. Free forever.</p>
   <div style="margin-top: 20px; display: flex; justify-content: center; gap: 20px;">
-    <a href="#">Privacy Policy</a>
+    <a href="privacy.html">Privacy Policy</a>
     <a href="#">Terms of Use</a>
     <a href="#">Contact Us</a>
   </div>
